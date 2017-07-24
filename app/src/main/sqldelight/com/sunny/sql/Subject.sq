@@ -1,0 +1,27 @@
+import java.lang.Integer;
+import java.util.List;
+import com.sunny.mvvmbilibili.data.model.pojo.Image;
+import com.sunny.mvvmbilibili.data.model.pojo.Person;
+import com.sunny.mvvmbilibili.data.model.pojo.Rating;
+
+CREATE TABLE subject (
+    id TEXT NOT NULL PRIMARY KEY,
+    rating TEXT AS Rating NOT NULL,
+    genres TEXT AS List<String> NOT NULL,
+    title TEXT NOT NULL,
+    casts TEXT AS List<Person> NOT NULL,
+    collect_count INTEGER AS Integer NOT NULL,
+    original_title TEXT NOT NULL,
+    subtype TEXT NOT NULL,
+    directors TEXT AS List<Person> NOT NULL,
+    year TEXT NOT NULL,
+    images TEXT AS Image NOT NULL,
+    alt TEXT NOT NULL
+);
+
+-- Further SQL statements are proceeded by an identifier.
+-- This will be used to name the constant in the generated Java code.
+
+select_all:
+SELECT *
+FROM subject;

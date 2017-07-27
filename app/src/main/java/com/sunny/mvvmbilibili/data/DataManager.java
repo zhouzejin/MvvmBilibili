@@ -11,8 +11,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import rx.Observable;
-import rx.functions.Func1;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 
 @Singleton
 public class DataManager {
@@ -35,9 +37,9 @@ public class DataManager {
 
     public Observable<Subject> syncSubjects() {
         return mRetrofitService.getSubjects()
-                .concatMap(new Func1<InTheatersEntity, Observable<? extends Subject>>() {
+                .concatMap(new Function<InTheatersEntity, ObservableSource<? extends Subject>>() {
                     @Override
-                    public Observable<? extends Subject> call(InTheatersEntity inTheatersEntity) {
+                    public ObservableSource<? extends Subject> apply(@NonNull InTheatersEntity inTheatersEntity) throws Exception {
                         return mDatabaseHelper.setSubjects(inTheatersEntity.subjects());
                     }
                 });

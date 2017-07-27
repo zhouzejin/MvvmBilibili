@@ -16,14 +16,17 @@ import com.sunny.mvvmbilibili.utils.RxUtil;
 
 import javax.inject.Inject;
 
-import rx.Observer;
-import rx.Subscription;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SyncService extends Service {
 
-    @Inject DataManager mDataManager;
-    private Subscription mSubscription;
+    @Inject
+    DataManager mDataManager;
+
+    private Disposable mDisposable;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, SyncService.class);
@@ -50,25 +53,30 @@ public class SyncService extends Service {
             return START_NOT_STICKY;
         }
 
-        RxUtil.unsubscribe(mSubscription);
-        mSubscription = mDataManager.syncSubjects()
+        RxUtil.dispose(mDisposable);
+        mDataManager.syncSubjects()
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<Subject>() {
                     @Override
-                    public void onCompleted() {
-                        LogUtil.i("Synced successfully!");
-                        stopSelf(startId);
+                    public void onSubscribe(@NonNull Disposable d) {
+                        mDisposable = d;
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onNext(@NonNull Subject subject) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
                         LogUtil.w(e, "Error syncing.");
                         stopSelf(startId);
-
                     }
 
                     @Override
-                    public void onNext(Subject subject) {
+                    public void onComplete() {
+                        LogUtil.i("Synced successfully!");
+                        stopSelf(startId);
                     }
                 });
 
@@ -77,7 +85,7 @@ public class SyncService extends Service {
 
     @Override
     public void onDestroy() {
-        if (mSubscription != null) mSubscription.unsubscribe();
+        if (mDisposable != null) mDisposable.dispose();
         super.onDestroy();
     }
 

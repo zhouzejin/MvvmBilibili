@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import retrofit2.adapter.rxjava.HttpException;
+import retrofit2.HttpException;
 
 public class NetworkUtil {
 

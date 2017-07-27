@@ -8,13 +8,13 @@ import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-import rx.Observable;
 
 public interface RetrofitService {
 
@@ -46,7 +46,7 @@ public interface RetrofitService {
                     .baseUrl(RetrofitService.ENDPOINT)
                     .client(httpClientBuilder.build())
                     .addConverterFactory(GsonConverterFactory.create(gson))
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
             return retrofit.create(RetrofitService.class);
         }

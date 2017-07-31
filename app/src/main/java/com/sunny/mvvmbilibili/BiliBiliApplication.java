@@ -6,6 +6,7 @@ import android.content.Context;
 import com.sunny.mvvmbilibili.injection.component.ApplicationComponent;
 import com.sunny.mvvmbilibili.injection.component.DaggerApplicationComponent;
 import com.sunny.mvvmbilibili.injection.module.ApplicationModule;
+import com.sunny.mvvmbilibili.utils.LeakCanaryUtil;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 
 public class BiliBiliApplication extends Application  {
@@ -17,6 +18,7 @@ public class BiliBiliApplication extends Application  {
         super.onCreate();
 
         LogUtil.initLog();
+        LeakCanaryUtil.initLeakCanary(this);
     }
 
     public static BiliBiliApplication get(Context context) {

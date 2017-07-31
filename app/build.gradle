@@ -81,11 +81,6 @@ android {
         }
     }
 
-    // Needed because of this https://github.com/square/okio/issues/58
-    lintOptions {
-        warning 'InvalidPackage'
-    }
-
     packagingOptions {
         exclude 'LICENSE'
         exclude 'README.md'
@@ -117,6 +112,7 @@ dependencies {
     final GLIDE_VERSION = '3.8.0'
 
     final TIMBER_VERSION = '4.5.1'
+    final LEAKCANARY_VERSION = '1.5.1'
 
 
     def libSupportAppcompatV7 = "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
@@ -145,6 +141,8 @@ dependencies {
     def libGlide = "com.github.bumptech.glide:glide:$GLIDE_VERSION"
 
     def libTimber = "com.jakewharton.timber:timber:$TIMBER_VERSION"
+    def libLeakcanary = "com.squareup.leakcanary:leakcanary-android:$LEAKCANARY_VERSION"
+    def libLeakcanaryNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:$LEAKCANARY_VERSION"
 
 
     // App Dependencies
@@ -180,4 +178,7 @@ dependencies {
     compile libGlide
 
     compile libTimber
+    debugCompile libLeakcanary
+    releaseCompile libLeakcanaryNoOp
+    testCompile libLeakcanaryNoOp
 }

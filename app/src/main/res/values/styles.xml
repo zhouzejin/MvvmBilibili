@@ -1,9 +1,26 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="BilibiliTheme" parent="BilibiliTheme.Base"/>
+
+    <style name="BilibiliTheme.Base" parent="BilibiliTheme.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+    </style>
+
+    <style name="BilibiliTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="BilibiliTheme.Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="BilibiliTheme.TransparentStatusBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
 </resources>

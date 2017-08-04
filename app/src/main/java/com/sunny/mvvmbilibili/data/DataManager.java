@@ -19,21 +19,41 @@ import io.reactivex.functions.Function;
 @Singleton
 public class DataManager {
 
-    private final RetrofitService mRetrofitService;
-    private final DatabaseHelper mDatabaseHelper;
     private final PreferencesHelper mPreferencesHelper;
+    private final DatabaseHelper mDatabaseHelper;
+    private final RetrofitService mRetrofitService;
 
     @Inject
-    public DataManager(RetrofitService retrofitService, PreferencesHelper preferencesHelper,
-                       DatabaseHelper databaseHelper) {
-        mRetrofitService = retrofitService;
+    public DataManager(PreferencesHelper preferencesHelper, DatabaseHelper databaseHelper,
+                       RetrofitService retrofitService) {
         mPreferencesHelper = preferencesHelper;
         mDatabaseHelper = databaseHelper;
+        mRetrofitService = retrofitService;
     }
 
-    public PreferencesHelper getPreferencesHelper() {
-        return mPreferencesHelper;
+    /*****
+     * Preferences Data Source
+     *****/
+
+    public void setLogin(Boolean isLogin) {
+        mPreferencesHelper.putBoolean(PreferencesHelper.KEY_IS_LOGIN, isLogin);
     }
+
+    public Boolean isLogin() {
+        return mPreferencesHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false);
+    }
+
+    /*****
+     * Database Data Source
+     *****/
+
+    public Observable<List<Subject>> getSubjects() {
+        return mDatabaseHelper.getSubjects().distinct();
+    }
+
+    /*****
+     * Net Data Source
+     *****/
 
     public Observable<Subject> syncSubjects() {
         return mRetrofitService.getSubjects()
@@ -43,10 +63,6 @@ public class DataManager {
                         return mDatabaseHelper.setSubjects(inTheatersEntity.subjects());
                     }
                 });
-    }
-
-    public Observable<List<Subject>> getSubjects() {
-        return mDatabaseHelper.getSubjects().distinct();
     }
 
 }

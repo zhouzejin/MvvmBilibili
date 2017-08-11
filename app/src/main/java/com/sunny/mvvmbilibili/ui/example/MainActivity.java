@@ -28,6 +28,14 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
+            startService(SyncService.getStartIntent(this));
+        }
+    }
+
+    @Override
+    public void initComponent() {
         setContentView(R.layout.activity_main);
 
         MainFragment mainFragment = (MainFragment) getSupportFragmentManager()
@@ -37,10 +45,6 @@ public class MainActivity extends BaseActivity {
             mainFragment = MainFragment.newInstance();
             ActivityUtil.addFragmentToActivity(
                     getSupportFragmentManager(), mainFragment, R.id.contentFrame);
-        }
-
-        if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
-            startService(SyncService.getStartIntent(this));
         }
     }
 

@@ -118,6 +118,7 @@ dependencies {
     def libSupportAppcompatV7 = "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     def libSupportRecyclerviewV7 = "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
     def libSupportCardviewV7 = "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
+    def libSupportDesign = "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
     def libSupportAnnotations = "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
 
     def libDagger = "com.google.dagger:dagger:$DAGGER_VERSION"
@@ -149,6 +150,7 @@ dependencies {
     compile libSupportAppcompatV7
     compile libSupportRecyclerviewV7
     compile libSupportCardviewV7
+    compile libSupportDesign
     compile libSupportAnnotations
 
     compile libDagger

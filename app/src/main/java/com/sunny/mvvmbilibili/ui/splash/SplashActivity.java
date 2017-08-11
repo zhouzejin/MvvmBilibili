@@ -14,6 +14,7 @@ import com.sunny.mvvmbilibili.injection.component.DaggerConfigPersistentComponen
 import com.sunny.mvvmbilibili.injection.module.ActivityModule;
 import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
 import com.sunny.mvvmbilibili.ui.example.MainActivity;
+import com.sunny.mvvmbilibili.ui.login.LoginActivity;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -73,14 +74,11 @@ public class SplashActivity extends Activity {
     }
 
     private void finishTask() {
-        Class<?> clazz;
         if (mDataManager.isLogin()) {
-            clazz = MainActivity.class;
+            startActivity(new Intent(mContext, MainActivity.class));
         } else {
-            clazz = MainActivity.class;
+            startActivity(LoginActivity.getStartIntent(mContext));
         }
-
-        startActivity(new Intent(mContext, clazz));
         finish();
     }
 

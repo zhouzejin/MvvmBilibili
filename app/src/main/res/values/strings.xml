@@ -1,9 +1,16 @@
 <resources>
     <string name="ellipsis">&#8230;</string>
 
-    <string name="app_name">哔哩哔哩</string>
+    <string name="app_name">哔哩哔哩beta</string>
+    <string name="net_not_available">当前网络不可用</string>
 
     <string name="action_more">更多选项</string>
+
+    <string name="login">登录</string>
+    <string name="input_account">请输入您的哔哩哔哩账号</string>
+    <string name="input_password">请输入您的密码</string>
+    <string name="username_empty">用户名不能为空</string>
+    <string name="password_empty">密码不能为空</string>
 
     <string name="dialog_action_ok">OK</string>
     <string name="dialog_action_cancel">Cancel</string>

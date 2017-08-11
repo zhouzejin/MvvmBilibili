@@ -11,7 +11,6 @@
     <style name="BilibiliTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
@@ -19,8 +18,12 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="BilibiliTheme.TransparentStatusBar">
+    <style name="BilibiliTheme.Translucent">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!-- Android 5.x开始需要把颜色设置透明，否则会呈现系统默认的浅灰色 -->
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
     </style>
 
 </resources>

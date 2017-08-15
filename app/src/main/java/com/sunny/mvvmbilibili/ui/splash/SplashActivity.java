@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.WindowManager;
 
 import com.sunny.mvvmbilibili.BiliBiliApplication;
 import com.sunny.mvvmbilibili.R;
@@ -49,6 +50,10 @@ public class SplashActivity extends Activity {
         ConfigPersistentComponent component = DaggerConfigPersistentComponent.builder()
                 .applicationComponent(BiliBiliApplication.get(this).getComponent()).build();
         component.activityComponent(new ActivityModule(this)).inject(this);
+
+        // 全屏、半透明、透明主题时，让Layout延伸到StatusBar和NavigationBar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         setContentView(R.layout.activity_splash);
 

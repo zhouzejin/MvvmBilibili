@@ -15,7 +15,7 @@
         <!-- 启动界面 -->
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/BilibiliTheme.Translucent">
+            android:theme="@style/BilibiliTheme.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

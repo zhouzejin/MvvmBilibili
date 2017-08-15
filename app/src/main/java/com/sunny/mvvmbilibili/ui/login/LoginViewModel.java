@@ -117,7 +117,7 @@ public class LoginViewModel extends BaseViewModel<LoginMvvmView> {
 
     private void login() {
         mDataManager.setLogin(true);
-        getMvvmView().goMainView();
+        getMvvmView().goHomeView();
         getMvvmView().closeView();
     }
 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/primary"
+             android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:src="@drawable/selector_navigation_header_bg"
+            android:tint="@color/navigation_header_tint"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.sunny.mvvmbilibili.widget.CircleImageView
+            android:id="@+id/civ_portrait"
+            android:layout_width="@dimen/navigation_portrait_width"
+            android:layout_height="@dimen/navigation_portrait_height"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/navigation_margin"
+            android:src="@drawable/ic_default_portrait"
+            app:border_color="@android:color/white"
+            app:border_width="1dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/navigation_margin"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_message"/>
+
+            <View
+                android:layout_width="@dimen/navigation_margin"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_mode_night"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/civ_portrait"
+            android:layout_marginBottom="@dimen/navigation_margin"
+            android:layout_marginEnd="@dimen/navigation_margin"
+            android:layout_marginStart="@dimen/navigation_margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/navigation_nick_margin_end"
+                    android:text="@string/nick"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_level_bg"
+                    android:text="@string/level"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_tiny_body"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/navigation_member_margin"
+                android:layout_marginTop="@dimen/navigation_member_margin"
+                android:background="@drawable/shape_member_bg"
+                android:padding="@dimen/navigation_member_padding"
+                android:text="@string/member"
+                android:textColor="@color/text_color_selected"
+                android:textSize="@dimen/text_tiny_body"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/coin_amount"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_small_body"/>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

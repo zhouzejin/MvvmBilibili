@@ -2,7 +2,6 @@ package com.sunny.mvvmbilibili.ui.splash;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.WindowManager;
@@ -14,7 +13,7 @@ import com.sunny.mvvmbilibili.injection.component.ConfigPersistentComponent;
 import com.sunny.mvvmbilibili.injection.component.DaggerConfigPersistentComponent;
 import com.sunny.mvvmbilibili.injection.module.ActivityModule;
 import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
-import com.sunny.mvvmbilibili.ui.example.MainActivity;
+import com.sunny.mvvmbilibili.ui.home.HomeActivity;
 import com.sunny.mvvmbilibili.ui.login.LoginActivity;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
@@ -51,7 +50,7 @@ public class SplashActivity extends Activity {
                 .applicationComponent(BiliBiliApplication.get(this).getComponent()).build();
         component.activityComponent(new ActivityModule(this)).inject(this);
 
-        // 全屏、半透明、透明主题时，让Layout延伸到StatusBar和NavigationBar
+        // 让Layout延伸到StatusBar和NavigationBar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
@@ -80,7 +79,7 @@ public class SplashActivity extends Activity {
 
     private void finishTask() {
         if (mDataManager.isLogin()) {
-            startActivity(new Intent(mContext, MainActivity.class));
+            startActivity(HomeActivity.getStartIntent(mContext));
         } else {
             startActivity(LoginActivity.getStartIntent(mContext));
         }

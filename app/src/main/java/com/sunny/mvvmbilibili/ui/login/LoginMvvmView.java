@@ -10,6 +10,6 @@ public interface LoginMvvmView extends MvvmView {
 
     void closeView();
 
-    void goMainView();
+    void goHomeView();
 
 }

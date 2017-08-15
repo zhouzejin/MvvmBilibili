@@ -11,6 +11,7 @@
     <dimen name="text_body">16sp</dimen>
     <dimen name="text_small_body">14sp</dimen>
     <dimen name="text_mini_body">12sp</dimen>
+    <dimen name="text_tiny_body">10sp</dimen>
 
     <!-- App Bar, Bottom Navigation -->
     <dimen name="app_bar_elevation">5dp</dimen>
@@ -25,5 +26,13 @@
     <dimen name="login_input_content_padding">10dp</dimen>
     <dimen name="login_button_margin">15dp</dimen>
     <dimen name="login_button_padding">10dp</dimen>
+
+    <!-- navigation -->
+    <dimen name="navigation_portrait_width">72dp</dimen>
+    <dimen name="navigation_portrait_height">72dp</dimen>
+    <dimen name="navigation_margin">15dp</dimen>
+    <dimen name="navigation_nick_margin_end">5dp</dimen>
+    <dimen name="navigation_member_padding">3dp</dimen>
+    <dimen name="navigation_member_margin">8dp</dimen>
 
 </resources>

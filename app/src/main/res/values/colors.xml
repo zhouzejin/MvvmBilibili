@@ -5,9 +5,13 @@
     <color name="accent">#EE1289</color>
 
     <color name="window_background">#EAEAEA</color>
+    <color name="navigation_background">#F8F8F8</color>
     <color name="line">#E6E6E6</color>
     <color name="button_disabled">#DCDCDC</color>
+    <color name="navigation_header_tint">#F8668D</color>
+    <color name="navigation_header_bg">#FDC7D6</color>
 
     <color name="text_color_normal">#222222</color>
     <color name="text_color_hint">#B3B3B3</color>
+    <color name="text_color_selected">#FB7BA0</color>
 </resources>

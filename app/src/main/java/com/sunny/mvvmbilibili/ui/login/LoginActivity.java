@@ -9,7 +9,7 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.databinding.ActivityLoginBinding;
 import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
-import com.sunny.mvvmbilibili.ui.example.MainActivity;
+import com.sunny.mvvmbilibili.ui.home.HomeActivity;
 
 import javax.inject.Inject;
 
@@ -61,8 +61,8 @@ public class LoginActivity extends BaseActivity implements LoginMvvmView {
     }
 
     @Override
-    public void goMainView() {
-        startActivity(new Intent(mContext, MainActivity.class));
+    public void goHomeView() {
+        startActivity(HomeActivity.getStartIntent(mContext));
     }
 
 }

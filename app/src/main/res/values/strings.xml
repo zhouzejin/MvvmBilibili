@@ -5,12 +5,27 @@
     <string name="net_not_available">当前网络不可用</string>
 
     <string name="action_more">更多选项</string>
+    <string name="action_home">主页</string>
+    <string name="action_vip">我的大会员</string>
+    <string name="action_offline">离线缓存</string>
+    <string name="action_favourite">我的收藏</string>
+    <string name="action_history">历史记录</string>
+    <string name="action_attention">关注的人</string>
+    <string name="action_wallet">我的钱包</string>
+    <string name="action_theme">主题选择</string>
+    <string name="action_recommend">应用推荐</string>
+    <string name="action_setting">设置与帮助</string>
 
     <string name="login">登录</string>
     <string name="input_account">请输入您的哔哩哔哩账号</string>
     <string name="input_password">请输入您的密码</string>
     <string name="username_empty">用户名不能为空</string>
     <string name="password_empty">密码不能为空</string>
+
+    <string name="nick">angel5blue</string>
+    <string name="level">LV5</string>
+    <string name="member">正式会员</string>
+    <string name="coin_amount">硬币：47</string>
 
     <string name="dialog_action_ok">OK</string>
     <string name="dialog_action_cancel">Cancel</string>

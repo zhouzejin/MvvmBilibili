@@ -1,6 +1,7 @@
 package com.sunny.mvvmbilibili.ui.home;
 
 import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,8 +19,10 @@ import android.view.ViewGroup;
 
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.databinding.FragmentHomeBinding;
+import com.sunny.mvvmbilibili.injection.qualifier.FragmentContext;
 import com.sunny.mvvmbilibili.ui.base.BaseFragment;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
+import com.sunny.mvvmbilibili.ui.game.GameActivity;
 
 import javax.inject.Inject;
 
@@ -29,10 +32,9 @@ import javax.inject.Inject;
  */
 public class HomeFragment extends BaseFragment implements HomeMvvmView {
 
-    @Inject
-    HomeViewModel mViewModel;
-    @Inject
-    Activity mActivity;
+    @Inject HomeViewModel mViewModel;
+    @Inject Activity mActivity;
+    @Inject @FragmentContext Context mContext;
 
     private FragmentHomeBinding mBinding;
 
@@ -137,6 +139,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_game:
+                startActivity(GameActivity.getStartIntent(mContext));
                 break;
             case R.id.action_cache:
                 break;

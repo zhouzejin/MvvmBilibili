@@ -3,12 +3,14 @@ package com.sunny.mvvmbilibili.ui.base;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
+import android.databinding.ObservableField;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
+import com.sunny.mvvmbilibili.widget.CircleProgressView;
 
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     private T mMvvmView;
 
     protected static ImageLoader sImageLoader;
+
+    public final ObservableField<Boolean> isShowProgress = new ObservableField<>();
 
     @Override
     public void attachView(T mvvmView) {
@@ -58,12 +62,19 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     }
 
     @Bindable
-    public @StringRes int getToolbarTitle () {
+    public @StringRes int getToolbarTitle() {
         return 0;
     }
 
     public void onClickNavigation() {
+    }
 
+    public void showProgress() {
+        isShowProgress.set(true);
+    }
+
+    public void hideProgress() {
+        isShowProgress.set(false);
     }
 
     /*****
@@ -83,6 +94,15 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
         ImageLoader.DisplayOption option = new ImageLoader.DisplayOption.Builder().build();
         if (sImageLoader != null)
             sImageLoader.displayImage(imageView.getContext(), imageView, imageUrl, option);
+    }
+
+    @BindingAdapter("spin")
+    public static void setSpin(CircleProgressView progressView, boolean isSpinning) {
+        if (isSpinning) {
+            progressView.spin();
+        } else {
+            progressView.stopSpinning();
+        }
     }
 
 }

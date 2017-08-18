@@ -8,6 +8,7 @@
     </data>
 
     <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -19,12 +20,13 @@
             android:layout_height="match_parent"/>
 
         <android.support.design.widget.NavigationView
+            android:id="@+id/navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/navigation_background"
             app:headerLayout="@layout/layout_navigation_header"
-            app:menu="@menu/menu_home"/>
+            app:menu="@menu/menu_navagation"/>
     </android.support.v4.widget.DrawerLayout>
 
 </layout>

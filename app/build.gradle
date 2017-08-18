@@ -183,4 +183,6 @@ dependencies {
     debugCompile libLeakcanary
     releaseCompile libLeakcanaryNoOp
     testCompile libLeakcanaryNoOp
+
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
 }

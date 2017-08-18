@@ -31,7 +31,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_margin="@dimen/navigation_margin"
-            android:src="@drawable/ic_default_portrait"
+            android:src="@drawable/img_my_photo"
             app:border_color="@android:color/white"
             app:border_width="1dp"/>
 

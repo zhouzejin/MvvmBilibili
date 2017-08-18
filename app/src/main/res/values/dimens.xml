@@ -35,4 +35,9 @@
     <dimen name="navigation_member_padding">3dp</dimen>
     <dimen name="navigation_member_margin">8dp</dimen>
 
+    <!-- home -->
+    <dimen name="home_portrait_width">35dp</dimen>
+    <dimen name="home_portrait_height">35dp</dimen>
+    <dimen name="home_portrait_margin">15dp</dimen>
+
 </resources>

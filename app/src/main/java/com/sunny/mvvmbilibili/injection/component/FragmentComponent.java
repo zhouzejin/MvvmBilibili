@@ -1,11 +1,13 @@
 package com.sunny.mvvmbilibili.injection.component;
 
-import dagger.Subcomponent;
 import com.sunny.mvvmbilibili.BiliBiliApplication;
-import com.sunny.mvvmbilibili.injection.scope.InFragment;
 import com.sunny.mvvmbilibili.injection.module.ActivityModule;
 import com.sunny.mvvmbilibili.injection.module.FragmentModule;
+import com.sunny.mvvmbilibili.injection.scope.InFragment;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
+import com.sunny.mvvmbilibili.ui.home.HomeFragment;
+
+import dagger.Subcomponent;
 
 /**
  * This is a Dagger component. Refer to {@link BiliBiliApplication} for the list of Dagger components
@@ -16,5 +18,6 @@ import com.sunny.mvvmbilibili.ui.example.MainFragment;
 public interface FragmentComponent {
 
     void inject(MainFragment mainFragment);
+    void inject(HomeFragment homeFragment);
 
 }

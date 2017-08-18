@@ -110,7 +110,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
         }
 
         HomePagerAdapter adapter = new HomePagerAdapter(getChildFragmentManager());
-        mBinding.viewPager.setOffscreenPageLimit(5);
+        mBinding.viewPager.setOffscreenPageLimit(3);
         mBinding.viewPager.setAdapter(adapter);
         mBinding.viewPager.setCurrentItem(1);
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);

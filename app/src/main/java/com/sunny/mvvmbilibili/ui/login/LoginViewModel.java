@@ -49,6 +49,17 @@ public class LoginViewModel extends BaseViewModel<LoginMvvmView> {
         super.detachView();
     }
 
+    @Override
+    public int getNavigationIcon() {
+        return R.drawable.ic_close;
+    }
+
+    @Override
+    public int getToolbarTitle() {
+        return R.string.login;
+    }
+
+    @Override
     public void onClickNavigation() {
         getMvvmView().closeView();
     }

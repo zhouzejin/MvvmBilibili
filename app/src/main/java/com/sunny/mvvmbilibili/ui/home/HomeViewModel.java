@@ -5,7 +5,6 @@ import android.databinding.Bindable;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.sunny.mvvmbilibili.R;
-import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
@@ -22,12 +21,10 @@ import javax.inject.Inject;
 public class HomeViewModel extends BaseViewModel<HomeMvvmView> {
 
     private final Context mContext;
-    private final DataManager mDataManager;
 
     @Inject
-    public HomeViewModel(@ApplicationContext Context context, DataManager dataManager) {
+    public HomeViewModel(@ApplicationContext Context context) {
         mContext = context;
-        mDataManager = dataManager;
     }
 
     @Override

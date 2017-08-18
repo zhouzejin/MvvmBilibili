@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,19 +17,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
-            android:elevation="@dimen/app_bar_elevation">
-
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:navigationIcon="@drawable/ic_close"
-                app:navigationOnClickListener="@{(v) -> viewmodel.onClickNavigation()}"
-                app:title="@string/login"/>
-        </android.support.design.widget.AppBarLayout>
+        <include
+            layout="@layout/layout_toolbar"
+            bind:viewmodel="@{viewmodel}"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

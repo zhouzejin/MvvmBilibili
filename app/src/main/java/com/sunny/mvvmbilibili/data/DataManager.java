@@ -4,7 +4,7 @@ import com.sunny.mvvmbilibili.data.local.DatabaseHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
-import com.sunny.mvvmbilibili.data.remote.RetrofitService;
+import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 
 import java.util.List;
 
@@ -21,14 +21,14 @@ public class DataManager {
 
     private final PreferencesHelper mPreferencesHelper;
     private final DatabaseHelper mDatabaseHelper;
-    private final RetrofitService mRetrofitService;
+    private final RetrofitHelper mRetrofitHelper;
 
     @Inject
     public DataManager(PreferencesHelper preferencesHelper, DatabaseHelper databaseHelper,
-                       RetrofitService retrofitService) {
+                       RetrofitHelper retrofitHelper) {
         mPreferencesHelper = preferencesHelper;
         mDatabaseHelper = databaseHelper;
-        mRetrofitService = retrofitService;
+        mRetrofitHelper = retrofitHelper;
     }
 
     /*****
@@ -56,7 +56,8 @@ public class DataManager {
      *****/
 
     public Observable<Subject> syncSubjects() {
-        return mRetrofitService.getSubjects()
+        return mRetrofitHelper.getRetrofitService()
+                .getSubjects()
                 .concatMap(new Function<InTheatersEntity, ObservableSource<? extends Subject>>() {
                     @Override
                     public ObservableSource<? extends Subject> apply(@NonNull InTheatersEntity inTheatersEntity) throws Exception {

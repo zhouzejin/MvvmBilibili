@@ -9,6 +9,7 @@ import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
 import com.sunny.mvvmbilibili.widget.CircleProgressView;
 
@@ -58,12 +59,12 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
 
     @Bindable
     public @DrawableRes int getNavigationIcon() {
-        return 0;
+        return R.drawable.ic_back;
     }
 
     @Bindable
     public @StringRes int getToolbarTitle() {
-        return 0;
+        return R.string.app_name;
     }
 
     public void onClickNavigation() {
@@ -85,15 +86,21 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     @BindingAdapter("items")
     public static <T> void setItems(RecyclerView recyclerView, List<T> items) {
         BaseAdapter<T> adapter = (BaseAdapter<T>) recyclerView.getAdapter();
-        if (adapter != null)
+        if (adapter != null) {
             adapter.setData(items);
+        } else {
+            throw new RuntimeException("The data for RecyclerView is null");
+        }
     }
 
     @BindingAdapter("imageUrl")
     public static void setImageUrl(ImageView imageView, String imageUrl) {
         ImageLoader.DisplayOption option = new ImageLoader.DisplayOption.Builder().build();
-        if (sImageLoader != null)
+        if (sImageLoader != null) {
             sImageLoader.displayImage(imageView.getContext(), imageView, imageUrl, option);
+        } else {
+            throw new RuntimeException("Please inject ImageLoader in your ViewModel's constructor");
+        }
     }
 
     @BindingAdapter("spin")

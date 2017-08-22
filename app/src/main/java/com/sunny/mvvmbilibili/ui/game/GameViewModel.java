@@ -8,6 +8,7 @@ import android.databinding.ObservableList;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
+import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
@@ -19,10 +20,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -33,6 +37,7 @@ import io.reactivex.schedulers.Schedulers;
 public class GameViewModel extends BaseViewModel<GameMvvmView> {
 
     // These observable fields will update Views automatically
+    public final ObservableField<VipGameInfo> vipgameinfo = new ObservableField<>();
     public final ObservableList<GameInfo> items = new ObservableArrayList<>();
 
     private final Context mContext;
@@ -69,17 +74,37 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
         getMvvmView().closeView();
     }
 
-    public void loadGameInfo() {
+    public void loadData() {
         checkViewAttached();
         RxUtil.dispose(mDisposable);
-        mDataManager.getGameInfo()
-                .observeOn(AndroidSchedulers.mainThread())
+        mDataManager.getVipGameInfo()
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        mDisposable = disposable;
+                        showProgress();
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Consumer<VipGameInfo>() {
+                    @Override
+                    public void accept(VipGameInfo vipGameInfo) throws Exception {
+                        vipgameinfo.set(vipGameInfo);
+                    }
+                })
+                .observeOn(Schedulers.io())
+                .flatMap(new Function<VipGameInfo, ObservableSource<List<GameInfo>>>() {
+                    @Override
+                    public ObservableSource<List<GameInfo>> apply(@NonNull VipGameInfo vipGameInfo) throws Exception {
+                        return mDataManager.getGameInfo();
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<GameInfo>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         mDisposable = d;
-                        showProgress();
                     }
 
                     @Override

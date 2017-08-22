@@ -37,9 +37,9 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Bi
         return mData.size();
     }
 
-    public class BindingViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder {
+    public static class BindingViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder {
 
-        protected final T mBinding;
+        private final T mBinding;
 
         public BindingViewHolder(T binding) {
             super(binding.getRoot());

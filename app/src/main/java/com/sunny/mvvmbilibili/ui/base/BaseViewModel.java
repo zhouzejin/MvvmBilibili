@@ -85,7 +85,16 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     @SuppressWarnings("unchecked")
     @BindingAdapter("items")
     public static <T> void setItems(RecyclerView recyclerView, List<T> items) {
-        BaseAdapter<T> adapter = (BaseAdapter<T>) recyclerView.getAdapter();
+        RecyclerView.Adapter rawAdapter = recyclerView.getAdapter();
+        BaseAdapter<T> adapter;
+        if (rawAdapter instanceof HeaderAndFooterWrappedAdapter) {
+            adapter = ((HeaderAndFooterWrappedAdapter) rawAdapter).getWrappedAdapter();
+        } else if (rawAdapter instanceof BaseAdapter) {
+            adapter = (BaseAdapter) recyclerView.getAdapter();
+        } else {
+            throw new RuntimeException("The adapter is not a BaseAdapter");
+        }
+
         if (adapter != null) {
             adapter.setData(items);
         } else {

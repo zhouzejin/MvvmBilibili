@@ -3,13 +3,17 @@ package com.sunny.mvvmbilibili.ui.game;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
 
+import com.sunny.mvvmbilibili.BR;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.databinding.ActivityGameBinding;
 import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
+import com.sunny.mvvmbilibili.ui.base.HeaderAndFooterWrappedAdapter;
 
 import javax.inject.Inject;
 
@@ -35,17 +39,26 @@ public class GameActivity extends BaseActivity implements GameMvvmView {
         super.onCreate(savedInstanceState);
 
         mViewModel.attachView(this);
-        mViewModel.loadGameInfo();
+        mViewModel.loadData();
     }
 
     @Override
     public void initComponent() {
         activityComponent().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_game);
-        mBinding.recyclerView.setAdapter(mAdapter);
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        initAdapter();
         mBinding.setViewmodel(mViewModel);
         setContentView(mBinding.getRoot());
+    }
+
+    private void initAdapter() {
+        HeaderAndFooterWrappedAdapter wrappedAdapter = new HeaderAndFooterWrappedAdapter(mAdapter);
+        ViewDataBinding header = DataBindingUtil.inflate(LayoutInflater.from(mContext),
+                R.layout.layout_game_header, mBinding.recyclerView, false);
+        header.setVariable(BR.viewmodel, mViewModel); // 切记这里要设置ViewModel
+        wrappedAdapter.addHeaderView(header);
+        mBinding.recyclerView.setAdapter(wrappedAdapter);
     }
 
     @Override

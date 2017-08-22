@@ -5,8 +5,10 @@ import com.sunny.mvvmbilibili.data.local.FileHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
+import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.data.model.entity.GameInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
+import com.sunny.mvvmbilibili.data.model.entity.VipGameInfoEntity;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
 
@@ -91,6 +93,17 @@ public class DataManager {
                     @Override
                     public ObservableSource<? extends Subject> apply(@NonNull InTheatersEntity inTheatersEntity) throws Exception {
                         return mDatabaseHelper.setSubjects(inTheatersEntity.subjects());
+                    }
+                });
+    }
+
+    public Observable<VipGameInfo> getVipGameInfo() {
+        return mRetrofitHelper.getVipService()
+                .getVipGame()
+                .map(new Function<VipGameInfoEntity, VipGameInfo>() {
+                    @Override
+                    public VipGameInfo apply(@NonNull VipGameInfoEntity vipGameInfoEntity) throws Exception {
+                        return vipGameInfoEntity.data();
                     }
                 });
     }

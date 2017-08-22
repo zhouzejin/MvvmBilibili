@@ -44,4 +44,13 @@
     <dimen name="home_portrait_height">35dp</dimen>
     <dimen name="home_portrait_margin">15dp</dimen>
 
+    <!-- game -->
+    <dimen name="game_card_view_height">230dp</dimen>
+    <dimen name="game_card_view_margin_vertical">5dp</dimen>
+    <dimen name="game_card_view_margin_horizontal">10dp</dimen>
+    <dimen name="game_content_margin">10dp</dimen>
+    <dimen name="game_text_padding">5dp</dimen>
+    <dimen name="game_button_height">35dp</dimen>
+    <dimen name="game_button_width">70dp</dimen>
+
 </resources>

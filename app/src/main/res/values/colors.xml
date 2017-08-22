@@ -10,9 +10,12 @@
     <color name="button_disabled">#DCDCDC</color>
     <color name="navigation_header_tint">#F8668D</color>
     <color name="navigation_header_bg">#FDC7D6</color>
+    <color name="card_view_background">#FFFFFF</color>
 
     <color name="text_color_normal">#222222</color>
     <color name="text_color_hint">#B3B3B3</color>
     <color name="text_color_selected">#FB7BA0</color>
     <color name="text_color_tab">#AAFFFFFF</color>
+    <color name="text_color_body">#555555</color>
+    <color name="text_color_desc">#71000000</color>
 </resources>

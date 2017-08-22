@@ -6,6 +6,7 @@ import android.content.Context;
 import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.data.SyncService;
 import com.sunny.mvvmbilibili.data.local.DatabaseHelper;
+import com.sunny.mvvmbilibili.data.local.FileHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.injection.module.ApplicationModule;
@@ -26,6 +27,7 @@ public interface ApplicationComponent {
     @ApplicationContext Context context();
     Application application();
     PreferencesHelper preferencesHelper();
+    FileHelper fileHelper();
     DatabaseHelper databaseHelper();
     RetrofitHelper retrofitHelper();
     DataManager dataManager();

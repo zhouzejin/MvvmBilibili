@@ -1,10 +1,14 @@
 package com.sunny.mvvmbilibili.data;
 
 import com.sunny.mvvmbilibili.data.local.DatabaseHelper;
+import com.sunny.mvvmbilibili.data.local.FileHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
+import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
+import com.sunny.mvvmbilibili.data.model.entity.GameInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
+import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
 
 import java.util.List;
 
@@ -12,6 +16,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
@@ -20,13 +26,15 @@ import io.reactivex.functions.Function;
 public class DataManager {
 
     private final PreferencesHelper mPreferencesHelper;
+    private final FileHelper mFileHelper;
     private final DatabaseHelper mDatabaseHelper;
     private final RetrofitHelper mRetrofitHelper;
 
     @Inject
-    public DataManager(PreferencesHelper preferencesHelper, DatabaseHelper databaseHelper,
-                       RetrofitHelper retrofitHelper) {
+    public DataManager(PreferencesHelper preferencesHelper, FileHelper fileHelper,
+                       DatabaseHelper databaseHelper, RetrofitHelper retrofitHelper) {
         mPreferencesHelper = preferencesHelper;
+        mFileHelper = fileHelper;
         mDatabaseHelper = databaseHelper;
         mRetrofitHelper = retrofitHelper;
     }
@@ -41,6 +49,27 @@ public class DataManager {
 
     public Boolean isLogin() {
         return mPreferencesHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false);
+    }
+
+    /*****
+     * File Data Source
+     *****/
+    public Observable<List<GameInfo>> getGameInfo() {
+        return Observable.create(new ObservableOnSubscribe<List<GameInfo>>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<List<GameInfo>> e) throws Exception {
+                if (e.isDisposed()) return;
+                String content = mFileHelper.readAssetsFile("game_info.json");
+                GameInfoEntity entity = MyGsonTypeAdapterFactory.getRegisterTypeGson()
+                        .fromJson(content, GameInfoEntity.class);
+                if (entity != null && entity.items() != null) {
+                    e.onNext(entity.items());
+                    e.onComplete();
+                } else {
+                    e.onError(new RuntimeException("Read game info data error"));
+                }
+            }
+        });
     }
 
     /*****

@@ -95,7 +95,8 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
 
     @BindingAdapter("imageUrl")
     public static void setImageUrl(ImageView imageView, String imageUrl) {
-        ImageLoader.DisplayOption option = new ImageLoader.DisplayOption.Builder().build();
+        ImageLoader.DisplayOption option = new ImageLoader.DisplayOption.Builder()
+                .placeHolder(R.drawable.img_default_image).build();
         if (sImageLoader != null) {
             sImageLoader.displayImage(imageView.getContext(), imageView, imageUrl, option);
         } else {

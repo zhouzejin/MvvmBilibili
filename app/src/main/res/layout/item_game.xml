@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.game.GameViewModel.GameInfoViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/game_card_view_height"
+        android:layout_marginBottom="@dimen/game_card_view_margin_vertical"
+        android:layout_marginEnd="@dimen/game_card_view_margin_horizontal"
+        android:layout_marginStart="@dimen/game_card_view_margin_horizontal"
+        android:layout_marginTop="@dimen/game_card_view_margin_vertical"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/card_view_background"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        app:cardElevation="@dimen/cardview_default_elevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:scaleType="center"
+                app:imageUrl="@{viewmodel.gameinfo.get().cover()}"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/game_content_margin"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:padding="@dimen/game_text_padding"
+                    android:text="@{viewmodel.gameinfo.get().title()}"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_body"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="@dimen/game_text_padding"
+                    android:text="@{viewmodel.gameinfo.get().summary()}"
+                    android:textColor="@color/text_color_desc"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <Button
+                    android:layout_width="@dimen/game_button_width"
+                    android:layout_height="@dimen/game_button_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_button_pink"
+                    android:text="@string/download"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/text_small_body"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>

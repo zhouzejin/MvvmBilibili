@@ -27,6 +27,9 @@
     <string name="username_empty">用户名不能为空</string>
     <string name="password_empty">密码不能为空</string>
 
+    <string name="game_center">游戏中心</string>
+    <string name="download">下载</string>
+
     <string name="nick">angel5blue</string>
     <string name="level">LV5</string>
     <string name="member">正式会员</string>

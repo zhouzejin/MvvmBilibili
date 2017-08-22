@@ -5,18 +5,38 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="viewmodel"
             type="com.sunny.mvvmbilibili.ui.game.GameViewModel"/>
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include
-            layout="@layout/layout_progress"
+            layout="@layout/layout_toolbar"
             bind:viewmodel="@{viewmodel}"/>
-    </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:visibility="@{viewmodel.items.isEmpty() ? View.GONE : View.VISIBLE}"
+                app:items="@{viewmodel.items}"/>
+
+            <include
+                layout="@layout/layout_progress"
+                bind:viewmodel="@{viewmodel}"/>
+        </FrameLayout>
+    </LinearLayout>
 
 </layout>

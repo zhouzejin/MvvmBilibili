@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.sqldelight.ColumnAdapter;
@@ -25,10 +24,7 @@ import java.util.List;
 @AutoValue
 public abstract class Subject implements SubjectModel, Parcelable, Comparable<Subject> {
 
-    private static final Gson gson = new GsonBuilder()
-            .registerTypeAdapterFactory(MyGsonTypeAdapterFactory.create())
-            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-            .create();
+    private static final Gson gson = MyGsonTypeAdapterFactory.getRegisterTypeGson();
 
     private static final ColumnAdapter RATING_ADAPTER = new ColumnAdapter<Rating, String>() {
         @NonNull

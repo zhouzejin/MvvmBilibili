@@ -9,14 +9,16 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
-import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
+import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.browser.BrowserActivity;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -40,16 +42,13 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
     public final ObservableField<VipGameInfo> vipgameinfo = new ObservableField<>();
     public final ObservableList<GameInfo> items = new ObservableArrayList<>();
 
-    private final Context mContext;
     private final DataManager mDataManager;
 
     private Disposable mDisposable;
 
     @Inject
-    public GameViewModel(@ApplicationContext Context context, DataManager dataManager,
-                         ImageLoader imageLoader) {
+    public GameViewModel(DataManager dataManager, ImageLoader imageLoader) {
         sImageLoader = imageLoader;
-        mContext = context;
         mDataManager = dataManager;
     }
 
@@ -71,13 +70,14 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
 
     @Override
     public void onClickNavigation() {
-        getMvvmView().closeView();
+        getMvvmView().backView();
     }
 
     public void loadData() {
         checkViewAttached();
         RxUtil.dispose(mDisposable);
         mDataManager.getVipGameInfo()
+                .delay(1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
@@ -127,16 +127,27 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
                 });
     }
 
+    public void onClickHeader(VipGameInfo vipGameInfo) {
+        getMvvmView().goVipGiftView(vipGameInfo);
+    }
+
     /*****
      * Inner ViewModel
      *****/
 
     public static class GameInfoViewModel extends BaseViewModel {
 
+        private final Context mContext;
         public final ObservableField<GameInfo> gameinfo = new ObservableField<>();
 
-        public GameInfoViewModel(GameInfo gameInfo) {
+        public GameInfoViewModel(@ActivityContext Context context, GameInfo gameInfo) {
+            mContext = context;
             gameinfo.set(gameInfo);
+        }
+
+        public void onClickItem(GameInfo gameInfo) {
+            mContext.startActivity(BrowserActivity.getStartIntent(mContext,
+                    gameInfo.download_link(), gameInfo.title()));
         }
     }
 

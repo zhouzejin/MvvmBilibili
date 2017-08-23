@@ -5,6 +5,8 @@
     <string name="net_not_available">当前网络不可用</string>
     <string name="search_hint">搜索视频 番剧 up主或av号</string>
     <string name="back_hint">再按一次退出</string>
+    <string name="copied">已复制</string>
+    <string name="share_hint">来自「哔哩哔哩」的分享：</string>
 
     <string name="action_more">更多选项</string>
     <string name="action_home">主页</string>
@@ -20,6 +22,9 @@
     <string name="action_game">游戏</string>
     <string name="action_cache">缓存</string>
     <string name="action_search">搜索</string>
+    <string name="action_share">分享</string>
+    <string name="action_open">浏览器打开</string>
+    <string name="action_copy">复制链接</string>
 
     <string name="login">登录</string>
     <string name="input_account">请输入您的哔哩哔哩账号</string>
@@ -29,6 +34,7 @@
 
     <string name="game_center">游戏中心</string>
     <string name="download">下载</string>
+    <string name="game_vip_zone">年度大会员游戏礼包专区</string>
 
     <string name="nick">angel5blue</string>
     <string name="level">LV5</string>
@@ -42,9 +48,9 @@
     <string name="focus">关注</string>
     <string name="discover">发现</string>
 
-    <string name="dialog_action_ok">OK</string>
-    <string name="dialog_action_cancel">Cancel</string>
-    <string name="dialog_error_title">Sorry</string>
+    <string name="dialog_action_ok">确定</string>
+    <string name="dialog_action_cancel">取消</string>
+    <string name="dialog_error_title">抱歉</string>
 
     <string name="empty_subjects">There aren\'t any subjects</string>
     <string name="error_loading_subjects">There was a problem loading the subjects</string>

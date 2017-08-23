@@ -3,6 +3,7 @@ package com.sunny.mvvmbilibili.injection.component;
 import com.sunny.mvvmbilibili.BiliBiliApplication;
 import com.sunny.mvvmbilibili.injection.module.ActivityModule;
 import com.sunny.mvvmbilibili.injection.scope.InActivity;
+import com.sunny.mvvmbilibili.ui.browser.BrowserActivity;
 import com.sunny.mvvmbilibili.ui.game.GameActivity;
 import com.sunny.mvvmbilibili.ui.login.LoginActivity;
 import com.sunny.mvvmbilibili.ui.splash.SplashActivity;
@@ -20,5 +21,6 @@ public interface ActivityComponent {
     void inject(SplashActivity activity);
     void inject(LoginActivity activity);
     void inject(GameActivity activity);
+    void inject(BrowserActivity activity);
 
 }

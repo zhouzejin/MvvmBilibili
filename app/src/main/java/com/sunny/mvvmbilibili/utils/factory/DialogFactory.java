@@ -3,6 +3,7 @@ package com.sunny.mvvmbilibili.utils.factory;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
 
@@ -10,12 +11,17 @@ import com.sunny.mvvmbilibili.R;
 
 public final class DialogFactory {
 
-    public static Dialog createSimpleOkErrorDialog(Context context, String title, String message) {
+    public static Dialog createSimpleOkErrorDialog(Context context, String title, String message,
+                                                   DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(message)
-                .setNeutralButton(R.string.dialog_action_ok, null);
+                .setPositiveButton(R.string.dialog_action_ok, onClickListener);
         return alertDialog.create();
+    }
+
+    public static Dialog createSimpleOkErrorDialog(Context context, String title, String message) {
+        return createSimpleOkErrorDialog(context, title, message, null);
     }
 
     public static Dialog createSimpleOkErrorDialog(Context context,
@@ -31,7 +37,7 @@ public final class DialogFactory {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context)
                 .setTitle(context.getString(R.string.dialog_error_title))
                 .setMessage(message)
-                .setNeutralButton(R.string.dialog_action_ok, null);
+                .setPositiveButton(R.string.dialog_action_ok, null);
         return alertDialog.create();
     }
 
@@ -45,8 +51,7 @@ public final class DialogFactory {
         return progressDialog;
     }
 
-    public static ProgressDialog createProgressDialog(Context context,
-                                                      @StringRes int messageResource) {
+    public static ProgressDialog createProgressDialog(Context context, @StringRes int messageResource) {
         return createProgressDialog(context, context.getString(messageResource));
     }
 

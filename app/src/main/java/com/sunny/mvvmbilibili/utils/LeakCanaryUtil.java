@@ -2,6 +2,9 @@ package com.sunny.mvvmbilibili.utils;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.AndroidExcludedRefs;
+import com.squareup.leakcanary.DisplayLeakService;
+import com.squareup.leakcanary.ExcludedRefs;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -16,7 +19,17 @@ public class LeakCanaryUtil {
             // You should not init your app in this process.
             return;
         }
-        LeakCanary.install(context);
+
+        ExcludedRefs excludedRefs = AndroidExcludedRefs.createAppDefaults()
+                .instanceField("android.view.inputmethod.InputMethodManager", "mLastSrvView")
+                .build();
+
+        LeakCanary.refWatcher(context)
+                .listenerServiceClass(DisplayLeakService.class)
+                .excludedRefs(excludedRefs)
+                .buildAndInstall();
+
+//        LeakCanary.install(context);
     }
 
 }

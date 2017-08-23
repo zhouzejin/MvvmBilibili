@@ -11,6 +11,7 @@ import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.injection.module.ApplicationModule;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
+import com.sunny.mvvmbilibili.utils.ClipboardUtil;
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
 import com.sunny.mvvmbilibili.utils.singleton.RxBus;
 
@@ -33,5 +34,6 @@ public interface ApplicationComponent {
     DataManager dataManager();
     RxBus eventBus();
     ImageLoader imageLoader();
+    ClipboardUtil clipboardUtil();
 
 }

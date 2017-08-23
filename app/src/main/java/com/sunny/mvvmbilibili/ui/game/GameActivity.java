@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 
 import com.sunny.mvvmbilibili.BR;
 import com.sunny.mvvmbilibili.R;
+import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.databinding.ActivityGameBinding;
 import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.base.HeaderAndFooterWrappedAdapter;
+import com.sunny.mvvmbilibili.ui.browser.BrowserActivity;
 
 import javax.inject.Inject;
 
@@ -46,6 +48,7 @@ public class GameActivity extends BaseActivity implements GameMvvmView {
     public void initComponent() {
         activityComponent().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_game);
+        mBinding.recyclerView.setHasFixedSize(true);
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         initAdapter();
         mBinding.setViewmodel(mViewModel);
@@ -73,8 +76,14 @@ public class GameActivity extends BaseActivity implements GameMvvmView {
      *****/
 
     @Override
-    public void closeView() {
-        finish();
+    public void backView() {
+        onBackPressed();
+    }
+
+    @Override
+    public void goVipGiftView(VipGameInfo vipGameInfo) {
+        mContext.startActivity(BrowserActivity.getStartIntent(mContext,
+                vipGameInfo.link(), getString(R.string.game_vip_zone)));
     }
 
 }

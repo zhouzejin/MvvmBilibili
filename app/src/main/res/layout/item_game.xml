@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/game_card_view_height"
         android:layout_marginBottom="@dimen/game_card_view_margin_vertical"
-        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/card_view_background"
         app:cardCornerRadius="@dimen/cardview_default_radius"
         app:cardElevation="@dimen/cardview_default_elevation">
@@ -60,6 +61,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/shape_button_pink"
+                    android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.gameinfo.get())}"
                     android:text="@string/download"
                     android:textColor="@color/primary"
                     android:textSize="@dimen/text_small_body"/>

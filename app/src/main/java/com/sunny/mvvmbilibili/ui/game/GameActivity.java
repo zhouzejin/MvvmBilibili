@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 
 import com.sunny.mvvmbilibili.BR;
 import com.sunny.mvvmbilibili.R;
+import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.databinding.ActivityGameBinding;
 import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
@@ -82,8 +83,14 @@ public class GameActivity extends BaseActivity implements GameMvvmView {
 
     @Override
     public void goVipGiftView(VipGameInfo vipGameInfo) {
-        mContext.startActivity(BrowserActivity.getStartIntent(mContext,
+        startActivity(BrowserActivity.getStartIntent(mContext,
                 vipGameInfo.link(), getString(R.string.game_vip_zone)));
+    }
+
+    @Override
+    public void goGameDetailView(GameInfo gameInfo) {
+        startActivity(BrowserActivity.getStartIntent(mContext,
+                gameInfo.download_link(), gameInfo.title()));
     }
 
 }

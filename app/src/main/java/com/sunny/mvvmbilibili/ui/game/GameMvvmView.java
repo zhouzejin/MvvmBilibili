@@ -1,5 +1,6 @@
 package com.sunny.mvvmbilibili.ui.game;
 
+import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.ui.base.MvvmView;
 
@@ -13,5 +14,7 @@ public interface GameMvvmView extends MvvmView {
     void backView();
 
     void goVipGiftView(VipGameInfo vipGameInfo);
+
+    void goGameDetailView(GameInfo gameInfo);
 
 }

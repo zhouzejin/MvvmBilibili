@@ -4,19 +4,21 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import javax.inject.Inject;
-
 import com.sunny.mvvmbilibili.BR;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.databinding.ItemSubjectBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseAdapter;
 import com.sunny.mvvmbilibili.ui.base.ViewModel;
 
+import javax.inject.Inject;
+
 public class SubjectsAdapter extends BaseAdapter<Subject> {
 
-    @Inject
-    public SubjectsAdapter() {
+    private final MainViewModel mMainViewModel;
 
+    @Inject
+    public SubjectsAdapter(MainViewModel mainViewModel) {
+        mMainViewModel = mainViewModel;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class SubjectsAdapter extends BaseAdapter<Subject> {
 
     @Override
     public void onBindViewHolder(final BindingViewHolder holder, int position) {
-        ViewModel viewModel = new MainViewModel.SubjectViewModel(mData.get(position));
+        ViewModel viewModel = mMainViewModel.new SubjectViewModel(mData.get(position));
         holder.getBinding().setVariable(BR.viewmodel, viewModel);
         super.onBindViewHolder(holder, position);
     }

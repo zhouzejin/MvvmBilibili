@@ -88,7 +88,7 @@ public class MainViewModel extends BaseViewModel<MainMvvmView> {
      * Inner ViewModel
      *****/
 
-    public static class SubjectViewModel extends BaseViewModel {
+    public class SubjectViewModel extends BaseViewModel {
 
         public final ObservableField<String> title = new ObservableField<>();
         public final ObservableField<String> genres = new ObservableField<>();

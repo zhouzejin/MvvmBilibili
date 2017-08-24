@@ -1,6 +1,5 @@
 package com.sunny.mvvmbilibili.ui.game;
 
-import android.content.Context;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 import android.databinding.ObservableList;
@@ -9,10 +8,8 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
-import com.sunny.mvvmbilibili.injection.qualifier.ActivityContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
-import com.sunny.mvvmbilibili.ui.browser.BrowserActivity;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
@@ -135,19 +132,16 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
      * Inner ViewModel
      *****/
 
-    public static class GameInfoViewModel extends BaseViewModel {
+    public class GameInfoViewModel extends BaseViewModel {
 
-        private final Context mContext;
         public final ObservableField<GameInfo> gameinfo = new ObservableField<>();
 
-        public GameInfoViewModel(@ActivityContext Context context, GameInfo gameInfo) {
-            mContext = context;
+        public GameInfoViewModel(GameInfo gameInfo) {
             gameinfo.set(gameInfo);
         }
 
         public void onClickItem(GameInfo gameInfo) {
-            mContext.startActivity(BrowserActivity.getStartIntent(mContext,
-                    gameInfo.download_link(), gameInfo.title()));
+            GameViewModel.this.getMvvmView().goGameDetailView(gameInfo);
         }
     }
 

@@ -8,6 +8,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
@@ -27,6 +28,7 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     protected static ImageLoader sImageLoader;
 
     public final ObservableField<Boolean> isShowProgress = new ObservableField<>();
+    public final ObservableField<Boolean> isShowContentEmpty = new ObservableField<>();
 
     @Override
     public void attachView(T mvvmView) {
@@ -65,6 +67,16 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     @Bindable
     public @StringRes int getToolbarTitle() {
         return R.string.app_name;
+    }
+
+    @Bindable
+    public @DrawableRes int getContentEmptyImg() {
+        return R.drawable.img_default_image;
+    }
+
+    @Bindable
+    public @StringRes int getContentEmptyHint() {
+        return R.string.content_empty;
     }
 
     public void onClickNavigation() {
@@ -120,6 +132,11 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
         } else {
             progressView.stopSpinning();
         }
+    }
+
+    @BindingAdapter("android:drawableTop")
+    public static void setDrawableTop(TextView view, @DrawableRes int id) {
+        view.setCompoundDrawablesWithIntrinsicBounds(0, id, 0, 0);
     }
 
 }

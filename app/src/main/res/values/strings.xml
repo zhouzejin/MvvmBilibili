@@ -7,6 +7,7 @@
     <string name="back_hint">再按一次退出</string>
     <string name="copied">已复制</string>
     <string name="share_hint">来自「哔哩哔哩」的分享：</string>
+    <string name="content_empty">内容为空</string>
 
     <string name="action_more">更多选项</string>
     <string name="action_home">主页</string>
@@ -35,6 +36,8 @@
     <string name="game_center">游戏中心</string>
     <string name="download">下载</string>
     <string name="game_vip_zone">年度大会员游戏礼包专区</string>
+
+    <string name="no_cache">没有找到你的缓存哟</string>
 
     <string name="nick">angel5blue</string>
     <string name="level">LV5</string>

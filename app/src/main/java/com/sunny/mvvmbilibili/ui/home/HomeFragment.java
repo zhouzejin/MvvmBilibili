@@ -23,6 +23,7 @@ import com.sunny.mvvmbilibili.injection.qualifier.FragmentContext;
 import com.sunny.mvvmbilibili.ui.base.BaseFragment;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.game.GameActivity;
+import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
 
 import javax.inject.Inject;
 
@@ -142,6 +143,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
                 startActivity(GameActivity.getStartIntent(mContext));
                 break;
             case R.id.action_cache:
+                startActivity(OfflineActivity.getStartIntent(mContext));
                 break;
         }
         return super.onOptionsItemSelected(item);

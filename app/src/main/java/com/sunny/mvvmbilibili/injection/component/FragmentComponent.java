@@ -9,6 +9,7 @@ import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
 import com.sunny.mvvmbilibili.ui.history.HistoryFragment;
 import com.sunny.mvvmbilibili.ui.home.HomeFragment;
+import com.sunny.mvvmbilibili.ui.wallet.WalletFragment;
 
 import dagger.Subcomponent;
 
@@ -25,5 +26,6 @@ public interface FragmentComponent {
     void inject(FavouriteFragment fragment);
     void inject(HistoryFragment fragment);
     void inject(AttentionFragment fragment);
+    void inject(WalletFragment fragment);
 
 }

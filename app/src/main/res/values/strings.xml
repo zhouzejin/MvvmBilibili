@@ -43,6 +43,8 @@
     <string name="edit">编辑</string>
 
     <string name="no_favourite">没有找到你的收藏哟</string>
+    <string name="no_history">暂时还没有观看记录哟</string>
+    <string name="no_attention">你还没有关注的人哟</string>
 
     <string name="nick">angel5blue</string>
     <string name="level">LV5</string>

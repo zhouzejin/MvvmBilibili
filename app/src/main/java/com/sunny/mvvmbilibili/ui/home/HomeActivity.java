@@ -14,8 +14,10 @@ import android.view.MenuItem;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.data.SyncService;
 import com.sunny.mvvmbilibili.databinding.ActivityHomeBinding;
+import com.sunny.mvvmbilibili.ui.attention.AttentionFragment;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
+import com.sunny.mvvmbilibili.ui.history.HistoryFragment;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
 import com.sunny.mvvmbilibili.utils.ActivityUtil;
 import com.sunny.mvvmbilibili.utils.ToastUtil;
@@ -32,6 +34,8 @@ public class HomeActivity extends BaseActivity
 
     private static final String HOME_TAG = "home_fragment";
     private static final String FAVOURITE_TAG = "favourite_fragment";
+    private static final String HISTORY_TAG = "history_fragment";
+    private static final String ATTENTION_TAG = "attention_fragment";
 
     private ActivityHomeBinding mBinding;
 
@@ -73,6 +77,8 @@ public class HomeActivity extends BaseActivity
 
         mFragments.put(HOME_TAG, homeFragment);
         mFragments.put(FAVOURITE_TAG, FavouriteFragment.newInstance());
+        mFragments.put(HISTORY_TAG, HistoryFragment.newInstance());
+        mFragments.put(ATTENTION_TAG, AttentionFragment.newInstance());
     }
 
     private void showFragment(String tag) {
@@ -104,11 +110,11 @@ public class HomeActivity extends BaseActivity
                 showFragment(FAVOURITE_TAG);
                 return true;
             case R.id.action_history:
-                ToastUtil.showShort(this, "敬请期待");
-                break;
+                showFragment(HISTORY_TAG);
+                return true;
             case R.id.action_attention:
-                ToastUtil.showShort(this, "敬请期待");
-                break;
+                showFragment(ATTENTION_TAG);
+                return true;
             case R.id.action_wallet:
                 ToastUtil.showShort(this, "敬请期待");
                 break;

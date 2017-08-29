@@ -32,4 +32,18 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <!--离线缓存进度条Style-->
+    <style name="BilibiliTheme.NumberProgressBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="progress_max">100</item>
+        <item name="progress_current">0</item>
+        <item name="progress_unreached_color">@color/button_disabled</item>
+        <item name="progress_reached_color">@color/primary</item>
+        <item name="progress_text_size">10sp</item>
+        <item name="progress_text_color">@color/accent</item>
+        <item name="progress_reached_bar_height">20dp</item>
+        <item name="progress_unreached_bar_height">20dp</item>
+    </style>
+
 </resources>

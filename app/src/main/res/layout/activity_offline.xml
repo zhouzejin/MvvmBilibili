@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:bind="http://schemas.android.com/tools">
 
     <data>
@@ -17,6 +18,7 @@
         android:orientation="vertical">
 
         <include
+            android:id="@+id/layout_toolbar"
             layout="@layout/layout_toolbar"
             bind:viewmodel="@{viewmodel}"/>
 
@@ -27,6 +29,74 @@
             <include
                 layout="@layout/layout_content_empty"
                 bind:viewmodel="@{viewmodel}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.sunny.mvvmbilibili.widget.progressbar.NumberProgressBar
+                        style="@style/BilibiliTheme.NumberProgressBar"
+                        app:progress="@{viewmodel.progressValue}"
+                        app:progress_text_visibility="invisible"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/cache_info_margin_start"
+                        android:gravity="center_vertical"
+                        android:text="@{viewmodel.cacheInfo}"
+                        android:textColor="@color/text_color_body"
+                        android:textSize="@dimen/text_mini_body"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/cache_operate_vertical_margin"
+                    android:layout_marginEnd="@dimen/cache_operate_horizontal_margin"
+                    android:layout_marginStart="@dimen/cache_operate_horizontal_margin"
+                    android:layout_marginTop="@dimen/cache_operate_vertical_margin"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/all_start"
+                        android:textColor="@color/text_color_body"
+                        android:textSize="@dimen/text_small_body"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="@dimen/cache_operate_vertical_margin"
+                        android:layout_marginStart="@dimen/cache_operate_vertical_margin"
+                        android:background="@color/text_color_body"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit"
+                        android:textColor="@color/text_color_body"
+                        android:textSize="@dimen/text_small_body"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_offline_refresh"/>
+                </LinearLayout>
+            </LinearLayout>
         </FrameLayout>
     </LinearLayout>
 

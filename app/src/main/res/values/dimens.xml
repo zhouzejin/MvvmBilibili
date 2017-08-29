@@ -55,4 +55,9 @@
     <dimen name="game_button_height">35dp</dimen>
     <dimen name="game_button_width">70dp</dimen>
 
+    <!-- cache -->
+    <dimen name="cache_info_margin_start">10dp</dimen>
+    <dimen name="cache_operate_vertical_margin">12dp</dimen>
+    <dimen name="cache_operate_horizontal_margin">16dp</dimen>
+
 </resources>

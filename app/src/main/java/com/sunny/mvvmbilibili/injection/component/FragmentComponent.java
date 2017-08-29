@@ -5,6 +5,7 @@ import com.sunny.mvvmbilibili.injection.module.ActivityModule;
 import com.sunny.mvvmbilibili.injection.module.FragmentModule;
 import com.sunny.mvvmbilibili.injection.scope.InFragment;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
+import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
 import com.sunny.mvvmbilibili.ui.home.HomeFragment;
 
 import dagger.Subcomponent;
@@ -17,7 +18,8 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {ActivityModule.class, FragmentModule.class})
 public interface FragmentComponent {
 
-    void inject(MainFragment mainFragment);
-    void inject(HomeFragment homeFragment);
+    void inject(MainFragment fragment);
+    void inject(HomeFragment fragment);
+    void inject(FavouriteFragment fragment);
 
 }

@@ -5,8 +5,6 @@
 
     <data>
 
-        <import type="android.view.View"/>
-
         <variable
             name="viewmodel"
             type="com.sunny.mvvmbilibili.ui.offline.OfflineViewModel"/>

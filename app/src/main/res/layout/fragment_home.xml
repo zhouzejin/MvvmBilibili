@@ -41,7 +41,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_drawer"/>
+                            android:src="@drawable/ic_half_drawer"/>
 
                         <com.sunny.mvvmbilibili.widget.CircleImageView
                             android:id="@+id/civ_portrait"

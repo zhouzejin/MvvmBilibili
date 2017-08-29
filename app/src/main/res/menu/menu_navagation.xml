@@ -43,14 +43,6 @@
         android:id="@+id/menu_bottom"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/action_theme"
-            android:icon="@drawable/ic_theme"
-            android:title="@string/action_theme"/>
-        <item
-            android:id="@+id/action_recommend"
-            android:icon="@drawable/ic_recommend"
-            android:title="@string/action_recommend"/>
-        <item
             android:id="@+id/action_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/action_setting"/>

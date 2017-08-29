@@ -15,7 +15,8 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.data.SyncService;
 import com.sunny.mvvmbilibili.databinding.ActivityHomeBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
-import com.sunny.mvvmbilibili.ui.example.MainFragment;
+import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
+import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
 import com.sunny.mvvmbilibili.utils.ActivityUtil;
 import com.sunny.mvvmbilibili.utils.ToastUtil;
 
@@ -71,7 +72,7 @@ public class HomeActivity extends BaseActivity
         mHomeMvvmView = homeFragment;
 
         mFragments.put(HOME_TAG, homeFragment);
-        mFragments.put(FAVOURITE_TAG, MainFragment.newInstance());
+        mFragments.put(FAVOURITE_TAG, FavouriteFragment.newInstance());
     }
 
     private void showFragment(String tag) {
@@ -97,11 +98,23 @@ public class HomeActivity extends BaseActivity
                 ToastUtil.showShort(this, "敬请期待");
                 break;
             case R.id.action_offline:
-                ToastUtil.showShort(this, "敬请期待");
+                startActivity(OfflineActivity.getStartIntent(this));
                 break;
             case R.id.action_favourite:
                 showFragment(FAVOURITE_TAG);
                 return true;
+            case R.id.action_history:
+                ToastUtil.showShort(this, "敬请期待");
+                break;
+            case R.id.action_attention:
+                ToastUtil.showShort(this, "敬请期待");
+                break;
+            case R.id.action_wallet:
+                ToastUtil.showShort(this, "敬请期待");
+                break;
+            case R.id.action_settings:
+                ToastUtil.showShort(this, "敬请期待");
+                break;
         }
         return false;
     }

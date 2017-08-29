@@ -17,8 +17,6 @@
     <string name="action_history">历史记录</string>
     <string name="action_attention">关注的人</string>
     <string name="action_wallet">我的钱包</string>
-    <string name="action_theme">主题选择</string>
-    <string name="action_recommend">应用推荐</string>
     <string name="action_setting">设置与帮助</string>
     <string name="action_game">游戏</string>
     <string name="action_cache">缓存</string>
@@ -43,6 +41,8 @@
     <string name="cache_info">主存储：%1$s/可用：%2$s</string>
     <string name="all_start">全部开始</string>
     <string name="edit">编辑</string>
+
+    <string name="no_favourite">没有找到你的收藏哟</string>
 
     <string name="nick">angel5blue</string>
     <string name="level">LV5</string>

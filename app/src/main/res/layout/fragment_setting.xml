@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.setting.SettingViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_toolbar"
+            bind:viewmodel="@{viewmodel}"/>
+
+        <com.sunny.mvvmbilibili.widget.SpringScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/setting_text_view_margin"
+                    android:background="@color/card_view_background"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_arrow"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{(v) -> viewmodel.goAboutMe()}"
+                    android:padding="@dimen/setting_text_view_padding"
+                    android:text="@string/about_me"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_body"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/card_view_background"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_arrow"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{(v) -> viewmodel.goAboutApp()}"
+                    android:padding="@dimen/setting_text_view_padding"
+                    android:text="@string/about_app"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_body"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/setting_text_view_margin"
+                    android:layout_marginTop="@dimen/setting_text_view_margin"
+                    android:background="@color/card_view_background"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="@dimen/setting_text_view_padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/check_update"
+                        android:textColor="@color/text_color_body"
+                        android:textSize="@dimen/text_body"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewmodel.versionName}"
+                        android:textColor="@color/text_color_desc"
+                        android:textSize="@dimen/text_body"/>
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/setting_button_margin"
+                    android:background="@drawable/selector_button"
+                    android:onClick="@{(v) -> viewmodel.loginOut()}"
+                    android:padding="@dimen/setting_button_padding"
+                    android:text="@string/login_out"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_body"/>
+            </LinearLayout>
+        </com.sunny.mvvmbilibili.widget.SpringScrollView>
+    </LinearLayout>
+
+</layout>

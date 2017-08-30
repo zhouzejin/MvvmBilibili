@@ -40,7 +40,7 @@
 
                     <com.sunny.mvvmbilibili.widget.progressbar.NumberProgressBar
                         style="@style/BilibiliTheme.NumberProgressBar"
-                        app:progress="@{viewmodel.progressValue}"
+                        app:progress="@{viewmodel.storageProgress}"
                         app:progress_text_visibility="invisible"/>
 
                     <TextView
@@ -49,7 +49,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/cache_info_margin_start"
                         android:gravity="center_vertical"
-                        android:text="@{viewmodel.cacheInfo}"
+                        android:text="@{viewmodel.storageInfo}"
                         android:textColor="@color/text_color_body"
                         android:textSize="@dimen/text_mini_body"/>
                 </FrameLayout>

@@ -36,7 +36,7 @@ public class OfflineActivity extends BaseActivity implements OfflineMvvmView {
         super.onCreate(savedInstanceState);
 
         mViewModel.attachView(this);
-        mViewModel.getStorageStatus();
+        mViewModel.isShowContentEmpty.set(true);
     }
 
     @Override

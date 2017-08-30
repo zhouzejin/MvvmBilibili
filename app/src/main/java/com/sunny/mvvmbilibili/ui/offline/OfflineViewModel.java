@@ -1,7 +1,7 @@
 package com.sunny.mvvmbilibili.ui.offline;
 
 import android.content.Context;
-import android.databinding.ObservableField;
+import android.databinding.Bindable;
 import android.text.format.Formatter;
 
 import com.sunny.mvvmbilibili.R;
@@ -19,10 +19,6 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class OfflineViewModel extends BaseViewModel<OfflineMvvmView> {
-
-    // These observable fields will update Views automatically
-    public final ObservableField<Integer> progressValue = new ObservableField<>();
-    public final ObservableField<String> cacheInfo = new ObservableField<>();
 
     private final Context mContext;
 
@@ -66,18 +62,17 @@ public class OfflineViewModel extends BaseViewModel<OfflineMvvmView> {
         return R.string.no_cache;
     }
 
-    public void getStorageStatus() {
-        long phoneTotalSize = FileUtil.getPhoneTotalSize();
-        long phoneAvailableSize = FileUtil.getPhoneAvailableSize();
-        // 计算占用空间的百分比
-        int progress = countProgress(phoneTotalSize, phoneAvailableSize);
-        // 转换为G的显示单位
-        String totalSize = Formatter.formatFileSize(mContext, phoneTotalSize);
-        String availableSize = Formatter.formatFileSize(mContext, phoneAvailableSize);
+    @Bindable
+    public int getStorageProgress() {
+        return countProgress(FileUtil.getPhoneTotalSize(), FileUtil.getPhoneAvailableSize());
+    }
 
-        progressValue.set(progress);
-        cacheInfo.set(mContext.getString(R.string.cache_info, totalSize, availableSize));
-        isShowContentEmpty.set(true);
+    @Bindable
+    public String getStorageInfo() {
+        // 转换为G的显示单位
+        String totalSize = Formatter.formatFileSize(mContext, FileUtil.getPhoneTotalSize());
+        String availableSize = Formatter.formatFileSize(mContext, FileUtil.getPhoneAvailableSize());
+        return mContext.getString(R.string.cache_info, totalSize, availableSize);
     }
 
     private int countProgress(long phoneTotalSize, long phoneAvailableSize) {

@@ -19,6 +19,7 @@ import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
 import com.sunny.mvvmbilibili.ui.history.HistoryFragment;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
+import com.sunny.mvvmbilibili.ui.setting.SettingFragment;
 import com.sunny.mvvmbilibili.ui.wallet.WalletFragment;
 import com.sunny.mvvmbilibili.utils.ActivityUtil;
 import com.sunny.mvvmbilibili.utils.ToastUtil;
@@ -38,6 +39,7 @@ public class HomeActivity extends BaseActivity
     private static final String HISTORY_TAG = "history_fragment";
     private static final String ATTENTION_TAG = "attention_fragment";
     private static final String WALLET_TAG = "wallet_fragment";
+    private static final String SETTING_TAG = "setting_fragment";
 
     private ActivityHomeBinding mBinding;
 
@@ -82,6 +84,7 @@ public class HomeActivity extends BaseActivity
         mFragments.put(HISTORY_TAG, HistoryFragment.newInstance());
         mFragments.put(ATTENTION_TAG, AttentionFragment.newInstance());
         mFragments.put(WALLET_TAG, WalletFragment.newInstance());
+        mFragments.put(SETTING_TAG, SettingFragment.newInstance());
     }
 
     private void showFragment(String tag) {
@@ -122,8 +125,8 @@ public class HomeActivity extends BaseActivity
                 showFragment(WALLET_TAG);
                 return true;
             case R.id.action_settings:
-                ToastUtil.showShort(this, "敬请期待");
-                break;
+                showFragment(SETTING_TAG);
+                return true;
         }
         return false;
     }

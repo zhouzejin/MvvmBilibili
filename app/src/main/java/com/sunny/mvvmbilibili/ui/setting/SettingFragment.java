@@ -13,7 +13,6 @@ import com.sunny.mvvmbilibili.databinding.FragmentSettingBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseFragment;
 import com.sunny.mvvmbilibili.ui.home.HomeActivity;
 import com.sunny.mvvmbilibili.ui.login.LoginActivity;
-import com.sunny.mvvmbilibili.utils.ToastUtil;
 
 import javax.inject.Inject;
 
@@ -88,12 +87,12 @@ public class SettingFragment extends BaseFragment implements SettingMvvmView {
 
     @Override
     public void goAboutMeView() {
-        ToastUtil.showShort(mActivity, "About me");
+        startActivity(AboutMeActivity.getStartIntent(mActivity));
     }
 
     @Override
     public void goAboutAppView() {
-        ToastUtil.showShort(mActivity, "About app");
+        startActivity(AboutAppActivity.getStartIntent(mActivity));
     }
 
 }

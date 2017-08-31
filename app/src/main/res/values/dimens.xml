@@ -65,5 +65,12 @@
     <dimen name="setting_text_view_padding">16dp</dimen>
     <dimen name="setting_button_margin">15dp</dimen>
     <dimen name="setting_button_padding">10dp</dimen>
+    <dimen name="setting_image_view_width">100dp</dimen>
+    <dimen name="setting_image_view_height">100dp</dimen>
+    <dimen name="setting_image_view_margin_top">20dp</dimen>
+    <dimen name="setting_image_view_margin_bottom">40dp</dimen>
+    <dimen name="setting_line_width">120dp</dimen>
+    <dimen name="setting_line_margin_top">10dp</dimen>
+    <dimen name="setting_info_margin_top">30dp</dimen>
 
 </resources>

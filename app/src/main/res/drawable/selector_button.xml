@@ -14,7 +14,7 @@
     </item>
     <item android:state_enabled="false">
         <shape>
-            <solid android:color="@color/button_disabled"/>
+            <solid android:color="@color/disabled"/>
             <corners android:radius="5dp"/>
         </shape>
     </item>

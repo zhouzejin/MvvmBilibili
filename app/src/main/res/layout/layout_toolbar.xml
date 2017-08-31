@@ -20,10 +20,10 @@
             android:layout_height="?android:actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@{viewmodel.navigationIcon}"
+            app:navigationIcon="@{viewmodel.navigationIcon, default=@drawable/ic_back}"
             app:navigationOnClickListener="@{(v) -> viewmodel.onClickNavigation()}"
             app:popupTheme="@style/Theme.AppCompat.Light"
-            app:title="@{viewmodel.toolbarTitle}"/>
+            app:title="@{viewmodel.toolbarTitle, default=@string/app_name}"/>
     </android.support.design.widget.AppBarLayout>
 
 </layout>

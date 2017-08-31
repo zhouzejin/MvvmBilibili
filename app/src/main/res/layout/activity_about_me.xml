@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.sunny.mvvmbilibili.ui.setting.AboutMeActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/app_bar_elevation">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@drawable/ic_back"
+                app:navigationOnClickListener="@{(v) -> activity.onClickNavigation()}"
+                app:popupTheme="@style/Theme.AppCompat.Light"
+                app:title="@string/about_me"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <com.sunny.mvvmbilibili.widget.SpringScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.sunny.mvvmbilibili.widget.CircleImageView
+                    android:layout_width="@dimen/setting_image_view_width"
+                    android:layout_height="@dimen/setting_image_view_height"
+                    android:layout_marginBottom="@dimen/setting_image_view_margin_bottom"
+                    android:layout_marginTop="@dimen/setting_image_view_margin_top"
+                    android:src="@drawable/img_my_photo"
+                    app:border_color="@android:color/darker_gray"
+                    app:border_width="1dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nick"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_large_body"/>
+
+                <View
+                    android:layout_width="@dimen/setting_line_width"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/setting_line_margin_top"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/setting_info_margin_top"
+                    android:autoLink="web"
+                    android:text="@string/github"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/setting_info_margin_top"
+                    android:autoLink="web"
+                    android:text="@string/jian_shu"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/setting_info_margin_top"
+                    android:autoLink="web"
+                    android:text="@string/micro_blog"
+                    android:textSize="@dimen/text_small_body"/>
+            </LinearLayout>
+        </com.sunny.mvvmbilibili.widget.SpringScrollView>
+    </LinearLayout>
+
+</layout>

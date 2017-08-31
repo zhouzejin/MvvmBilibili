@@ -7,7 +7,7 @@
     <color name="window_background">#EAEAEA</color>
     <color name="navigation_background">#F8F8F8</color>
     <color name="line">#E6E6E6</color>
-    <color name="button_disabled">#DCDCDC</color>
+    <color name="disabled">#DCDCDC</color>
     <color name="navigation_header_tint">#F8668D</color>
     <color name="navigation_header_bg">#FDC7D6</color>
     <color name="card_view_background">#FFFFFF</color>

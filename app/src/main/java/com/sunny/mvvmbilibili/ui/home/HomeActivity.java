@@ -18,6 +18,7 @@ import com.sunny.mvvmbilibili.ui.attention.AttentionFragment;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
 import com.sunny.mvvmbilibili.ui.history.HistoryFragment;
+import com.sunny.mvvmbilibili.ui.member.MemberActivity;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
 import com.sunny.mvvmbilibili.ui.setting.SettingFragment;
 import com.sunny.mvvmbilibili.ui.wallet.WalletFragment;
@@ -107,7 +108,7 @@ public class HomeActivity extends BaseActivity
                 showFragment(HOME_TAG);
                 return true;
             case R.id.action_vip:
-                ToastUtil.showShort(this, "敬请期待");
+                startActivity(MemberActivity.getStartIntent(this));
                 break;
             case R.id.action_offline:
                 startActivity(OfflineActivity.getStartIntent(this));

@@ -60,6 +60,12 @@
             android:name=".ui.setting.AboutAppActivity"
             android:screenOrientation="portrait"/>
 
+        <!-- 大会员界面 -->
+        <activity
+            android:name=".ui.member.MemberActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BilibiliTheme.TransparentStatus"/>
+
         <activity
             android:name=".ui.example.MainActivity"
             android:label="@string/app_name"/>

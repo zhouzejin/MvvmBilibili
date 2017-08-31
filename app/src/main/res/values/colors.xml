@@ -18,4 +18,5 @@
     <color name="text_color_tab">#AAFFFFFF</color>
     <color name="text_color_body">#555555</color>
     <color name="text_color_desc">#71000000</color>
+    <color name="text_color_stress">#FE6F70</color>
 </resources>

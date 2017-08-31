@@ -73,4 +73,10 @@
     <dimen name="setting_line_margin_top">10dp</dimen>
     <dimen name="setting_info_margin_top">30dp</dimen>
 
+    <!-- member -->
+    <dimen name="member_head_height">300dp</dimen>
+    <dimen name="member_image_margin_top">40dp</dimen>
+    <dimen name="member_button_height">40dp</dimen>
+    <dimen name="member_button_margin">12dp</dimen>
+
 </resources>

@@ -77,6 +77,11 @@
     <string name="share_url_title">分享哔哩哔哩APP</string>
     <string name="feedback_message">如果您有任何意见或者发现了Bug，可以在GitHub上给我提Issues，我会第一时间关注并解决，谢谢~</string>
 
+    <string name="vip">大会员</string>
+    <string name="no_vip"><Data><![CDATA[您还不是&#160;&#160;<big><b>大会员</b></big>&#160;&#160;哦]]></Data></string>
+    <string name="vip_desc">黑科技在召唤</string>
+    <string name="immediately_open">立即开通</string>
+
     <string name="dialog_action_ok">确定</string>
     <string name="dialog_action_cancel">取消</string>
     <string name="dialog_error_title">抱歉</string>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.recommend.RecommendViewModel.ResultHeadViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recommend_header_height"
+        android:layout_gravity="center"
+        android:padding="@dimen/recommend_padding">
+
+        <ImageView
+            android:id="@+id/iv_category"
+            android:layout_width="@dimen/recommend_header_icon_width"
+            android:layout_height="@dimen/recommend_header_icon_height"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/recommend_margin"
+            android:scaleType="centerCrop"
+            android:src="@{viewmodel.icon.get(), default=@drawable/ic_category_animation}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/iv_category"
+            android:text="@{viewmodel.head.get().title(), default=@string/app_name}"
+            android:textColor="@color/text_color_body"
+            android:textSize="@dimen/text_small_body"/>
+
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/recommend_margin"
+            android:background="@drawable/shape_textview_gray"
+            android:gravity="center"
+            android:text="@string/more"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_mini_body"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/tv_more"
+            android:text="@{viewmodel.currentLive}"
+            android:textColor="@color/text_color_normal"
+            android:textSize="@dimen/text_small_body"/>
+    </RelativeLayout>
+
+</layout>

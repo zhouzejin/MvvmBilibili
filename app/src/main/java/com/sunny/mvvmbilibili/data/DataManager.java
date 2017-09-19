@@ -4,10 +4,14 @@ import com.sunny.mvvmbilibili.data.local.DatabaseHelper;
 import com.sunny.mvvmbilibili.data.local.FileHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
+import com.sunny.mvvmbilibili.data.model.bean.RecommendBanner;
+import com.sunny.mvvmbilibili.data.model.bean.RecommendResult;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.data.model.entity.GameInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
+import com.sunny.mvvmbilibili.data.model.entity.RecommendBannerEntity;
+import com.sunny.mvvmbilibili.data.model.entity.RecommendShowEntity;
 import com.sunny.mvvmbilibili.data.model.entity.VipGameInfoEntity;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
@@ -104,6 +108,28 @@ public class DataManager {
                     @Override
                     public VipGameInfo apply(@NonNull VipGameInfoEntity vipGameInfoEntity) throws Exception {
                         return vipGameInfoEntity.data();
+                    }
+                });
+    }
+
+    public Observable<List<RecommendBanner>> getRecommendBanners() {
+        return mRetrofitHelper.getBiliBiliService()
+                .getRecommendBanner()
+                .map(new Function<RecommendBannerEntity, List<RecommendBanner>>() {
+                    @Override
+                    public List<RecommendBanner> apply(@NonNull RecommendBannerEntity recommendBannerEntity) throws Exception {
+                        return recommendBannerEntity.data();
+                    }
+                });
+    }
+
+    public Observable<List<RecommendResult>> getRecommendResults() {
+        return mRetrofitHelper.getBiliBiliService()
+                .getRecommendShow()
+                .map(new Function<RecommendShowEntity, List<RecommendResult>>() {
+                    @Override
+                    public List<RecommendResult> apply(@NonNull RecommendShowEntity recommendShowEntity) throws Exception {
+                        return recommendShowEntity.result();
                     }
                 });
     }

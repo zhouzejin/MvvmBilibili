@@ -3,6 +3,8 @@ package com.sunny.mvvmbilibili.ui.base;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
+import android.databinding.BindingMethod;
+import android.databinding.BindingMethods;
 import android.databinding.ObservableField;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
@@ -21,6 +23,10 @@ import java.util.List;
  * attachView() and detachView(). It also handles keeping a reference to the mvvmView that
  * can be accessed from the children classes by calling getMvvmView().
  */
+
+@BindingMethods({
+        @BindingMethod(type = android.widget.ImageView.class, attribute = "android:src", method = "setImageResource"),
+})
 public class BaseViewModel<T extends MvvmView> extends BaseObservable implements ViewModel<T> {
 
     private T mMvvmView;

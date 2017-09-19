@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.recommend.RecommendViewModel.ResultFootViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recommend_footer_height"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingEnd="@dimen/recommend_padding"
+        android:paddingStart="@dimen/recommend_padding">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/recommend_footer_image_height"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bangumi_timeline"
+            android:onClick="@{(v) -> viewmodel.onClickTimelineView()}"
+            android:scaleType="center"
+            android:src="@drawable/text_bangumi_timeline"/>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/recommend_footer_image_height"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bangumi_index"
+            android:onClick="@{(v) -> viewmodel.onClickIndexView()}"
+            android:scaleType="center"
+            android:src="@drawable/text_bangumi_index"/>
+    </LinearLayout>
+
+</layout>

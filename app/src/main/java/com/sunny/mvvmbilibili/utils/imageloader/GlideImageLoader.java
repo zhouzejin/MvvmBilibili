@@ -43,6 +43,7 @@ public class GlideImageLoader implements ImageLoader {
         Glide.with(context)
                 .load(imageUrl)
                 .placeholder(option.getPlaceHolder())
+                .dontAnimate()
                 .into(imageView);
     }
 
@@ -55,6 +56,7 @@ public class GlideImageLoader implements ImageLoader {
                 .load(imageUrl)
                 .placeholder(option.getPlaceHolder())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontAnimate()
                 .into(imageView);
     }
 

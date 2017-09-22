@@ -15,7 +15,7 @@ import com.sunny.mvvmbilibili.data.model.bean.RecommendResult;
 import com.sunny.mvvmbilibili.data.model.pojo.RecommendBody;
 import com.sunny.mvvmbilibili.databinding.FragmentRecommendBinding;
 import com.sunny.mvvmbilibili.injection.qualifier.FragmentContext;
-import com.sunny.mvvmbilibili.ui.base.BaseFragment;
+import com.sunny.mvvmbilibili.ui.base.LazyLoadFragment;
 import com.sunny.mvvmbilibili.ui.browser.BrowserActivity;
 import com.sunny.mvvmbilibili.utils.SnackbarUtil;
 import com.sunny.mvvmbilibili.utils.ToastUtil;
@@ -31,7 +31,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
  * The type Recommend fragment.
  * Created by Zhou Zejin on 2017/9/8.
  */
-public class RecommendFragment extends BaseFragment implements RecommendMvvmView {
+public class RecommendFragment extends LazyLoadFragment implements RecommendMvvmView {
 
     public final static Map<String, Integer> sIconMap = new HashMap<>();
 
@@ -65,11 +65,8 @@ public class RecommendFragment extends BaseFragment implements RecommendMvvmView
     private static final int FOOTER_SPAN_SIZE = 2;
     private static final int CONTENT_SPAN_SIZE = 1;
 
-    @Inject
-    RecommendViewModel mViewModel;
-    @Inject
-    @FragmentContext
-    Context mContext;
+    @Inject RecommendViewModel mViewModel;
+    @Inject @FragmentContext Context mContext;
 
     private FragmentRecommendBinding mBinding;
     private SectionedRecyclerViewAdapter mSectionedAdapter;
@@ -120,10 +117,13 @@ public class RecommendFragment extends BaseFragment implements RecommendMvvmView
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
         mViewModel.attachView(this);
         mBinding.setViewmodel(mViewModel);
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    protected void loadData() {
         mViewModel.refresh();
     }
 

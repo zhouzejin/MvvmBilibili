@@ -51,9 +51,7 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
     public final ObservableList<RecommendBanner> banners = new ObservableArrayList<>();
     public final ObservableList<RecommendResult> results = new ObservableArrayList<>();
 
-    private final
-    @ApplicationContext
-    Context mContext;
+    private final @ApplicationContext Context mContext;
     private final DataManager mDataManager;
 
     private Disposable mDisposable;
@@ -86,9 +84,7 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
     }
 
     @Bindable
-    public
-    @ColorRes
-    int[] getColorSchemeResources() {
+    public @ColorRes int[] getColorSchemeResources() {
         return new int[]{R.color.primary};
     }
 

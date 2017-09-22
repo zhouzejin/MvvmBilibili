@@ -98,4 +98,20 @@
     <dimen name="recommend_activity_item_width">170dp</dimen>
     <dimen name="recommend_activity_item_height">150dp</dimen>
 
+    <!-- live -->
+    <dimen name="live_footer_icon_width">40dp</dimen>
+    <dimen name="live_footer_icon_height">40dp</dimen>
+    <dimen name="live_footer_margin">5dp</dimen>
+    <dimen name="live_footer_padding">10dp</dimen>
+    <dimen name="live_header_margin">10dp</dimen>
+    <dimen name="live_header_padding">10dp</dimen>
+    <dimen name="live_header_icon_width">25dp</dimen>
+    <dimen name="live_header_icon_height">25dp</dimen>
+    <dimen name="live_body_margin">10dp</dimen>
+    <dimen name="live_body_min_height">190dp</dimen>
+    <dimen name="live_body_image_height">120dp</dimen>
+    <dimen name="live_body_padding">5dp</dimen>
+    <dimen name="live_body_icon_width">30dp</dimen>
+    <dimen name="live_body_icon_height">30dp</dimen>
+
 </resources>

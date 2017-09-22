@@ -4,12 +4,14 @@ import com.sunny.mvvmbilibili.data.local.DatabaseHelper;
 import com.sunny.mvvmbilibili.data.local.FileHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
+import com.sunny.mvvmbilibili.data.model.bean.LiveInfos;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendBanner;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendResult;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.data.model.entity.GameInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
+import com.sunny.mvvmbilibili.data.model.entity.LiveInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendBannerEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendShowEntity;
 import com.sunny.mvvmbilibili.data.model.entity.VipGameInfoEntity;
@@ -130,6 +132,17 @@ public class DataManager {
                     @Override
                     public List<RecommendResult> apply(@NonNull RecommendShowEntity recommendShowEntity) throws Exception {
                         return recommendShowEntity.result();
+                    }
+                });
+    }
+
+    public Observable<LiveInfos> getLiveInfos() {
+        return mRetrofitHelper.getLiveService()
+                .getLiveInfo()
+                .map(new Function<LiveInfoEntity, LiveInfos>() {
+                    @Override
+                    public LiveInfos apply(@NonNull LiveInfoEntity liveInfoEntity) throws Exception {
+                        return liveInfoEntity.data();
                     }
                 });
     }

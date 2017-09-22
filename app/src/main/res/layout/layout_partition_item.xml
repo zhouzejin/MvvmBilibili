@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.live.LiveViewModel.PartitionBodyViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/live_body_margin"
+        app:cardBackgroundColor="@color/card_view_background"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="?attr/selectableItemBackground"
+            android:minHeight="@dimen/live_body_min_height"
+            android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.live.get())}"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/live_body_image_height"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewmodel.live.get().cover().src()}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/live_body_padding">
+
+                <com.sunny.mvvmbilibili.widget.CircleImageView
+                    android:layout_width="@dimen/live_body_icon_width"
+                    android:layout_height="@dimen/live_body_icon_height"
+                    app:border_color="@color/card_view_background"
+                    app:border_width="1dp"
+                    app:imageUrl="@{viewmodel.live.get().owner().face()}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/live_body_margin"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{viewmodel.live.get().title(), default=@string/app_name}"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/live_body_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="@{viewmodel.live.get().owner().name()}"
+                    android:textColor="@color/text_color_desc"
+                    android:textSize="@dimen/text_mini_body"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/live_body_padding"
+                    android:drawableStart="@drawable/ic_watching"
+                    android:gravity="center_vertical"
+                    android:text="@{String.valueOf(viewmodel.live.get().online())}"
+                    android:textColor="@color/text_color_desc"
+                    android:textSize="@dimen/text_mini_body"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>

@@ -23,6 +23,7 @@ import com.sunny.mvvmbilibili.injection.qualifier.FragmentContext;
 import com.sunny.mvvmbilibili.ui.base.BaseFragment;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.game.GameActivity;
+import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
 
@@ -93,7 +94,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
             if (mFragments[i] != null) return;
             switch (i) {
                 case 0:
-                    mFragments[i] = MainFragment.newInstance();
+                    mFragments[i] = LiveFragment.newInstance();
                     break;
                 case 1:
                     mFragments[i] = RecommendFragment.newInstance();
@@ -114,7 +115,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
         }
 
         HomePagerAdapter adapter = new HomePagerAdapter(getChildFragmentManager());
-        mBinding.viewPager.setOffscreenPageLimit(3);
+        mBinding.viewPager.setOffscreenPageLimit(5);
         mBinding.viewPager.setAdapter(adapter);
         mBinding.viewPager.setCurrentItem(1);
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);

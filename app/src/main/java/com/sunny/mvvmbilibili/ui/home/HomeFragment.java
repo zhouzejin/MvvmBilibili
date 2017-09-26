@@ -26,6 +26,7 @@ import com.sunny.mvvmbilibili.ui.game.GameActivity;
 import com.sunny.mvvmbilibili.ui.home.bangumi.BangumiFragment;
 import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
+import com.sunny.mvvmbilibili.ui.home.region.RegionFragment;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
 
 import javax.inject.Inject;
@@ -104,7 +105,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
                     mFragments[i] = BangumiFragment.newInstance();
                     break;
                 case 3:
-                    mFragments[i] = MainFragment.newInstance();
+                    mFragments[i] = RegionFragment.newInstance();
                     break;
                 case 4:
                     mFragments[i] = MainFragment.newInstance();

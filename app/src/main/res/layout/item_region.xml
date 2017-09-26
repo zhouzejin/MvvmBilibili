@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.region.RegionViewModel.RegionItemViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/region_item_margin"
+        android:foreground="?android:selectableItemBackground"
+        android:gravity="center"
+        android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.region.get())}"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/region_item_icon_width"
+            android:layout_height="@dimen/region_item_icon_height"
+            android:src="@{viewmodel.region.get().icon_res()}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/region_item_padding"
+            android:text="@{viewmodel.region.get().title()}"
+            android:textColor="@color/text_color_body"
+            android:textSize="@dimen/text_small_body"/>
+    </LinearLayout>
+
+</layout>

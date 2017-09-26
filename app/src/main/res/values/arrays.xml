@@ -67,4 +67,22 @@
         <item>7月新番</item>
         <item>10月新番</item>
     </string-array>
+
+    <string-array name="region_title">
+        <item>直播</item>
+        <item>番剧</item>
+        <item>动画</item>
+        <item>音乐</item>
+        <item>舞蹈</item>
+        <item>游戏</item>
+        <item>科技</item>
+        <item>生活</item>
+        <item>鬼畜</item>
+        <item>时尚</item>
+        <item>广告</item>
+        <item>娱乐</item>
+        <item>电影</item>
+        <item>电视剧</item>
+        <item>游戏中心</item>
+    </string-array>
 </resources>

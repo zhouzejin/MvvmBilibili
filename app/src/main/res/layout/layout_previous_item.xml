@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.bangumi.BangumiViewModel.PreviousBodyViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/bangumi_body_margin"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.bangumiList.get())}"
+            app:cardBackgroundColor="@color/card_view_background"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bangumi_body_height"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewmodel.bangumiList.get().cover()}"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bangumi_body_shadow_height"
+                android:layout_gravity="bottom"
+                android:background="@drawable/shadow_gradient_reserve"
+                android:gravity="bottom"
+                android:padding="@dimen/bangumi_body_padding"
+                android:text="@{viewmodel.currentpursuing}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_mini_body"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:maxLines="1"
+            android:padding="@dimen/bangumi_body_padding"
+            android:text="@{viewmodel.bangumiList.get().title()}"
+            android:textColor="@color/text_color_body"
+            android:textSize="@dimen/text_small_body"/>
+    </LinearLayout>
+
+</layout>

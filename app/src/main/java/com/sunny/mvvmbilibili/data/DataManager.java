@@ -3,12 +3,16 @@ package com.sunny.mvvmbilibili.data;
 import com.sunny.mvvmbilibili.data.local.DatabaseHelper;
 import com.sunny.mvvmbilibili.data.local.FileHelper;
 import com.sunny.mvvmbilibili.data.local.PreferencesHelper;
+import com.sunny.mvvmbilibili.data.model.bean.BangumiRecommendResult;
+import com.sunny.mvvmbilibili.data.model.bean.BangumiResult;
 import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.LiveInfos;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendBanner;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendResult;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
+import com.sunny.mvvmbilibili.data.model.entity.BangumiInfoEntity;
+import com.sunny.mvvmbilibili.data.model.entity.BangumiRecommendEntity;
 import com.sunny.mvvmbilibili.data.model.entity.GameInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
 import com.sunny.mvvmbilibili.data.model.entity.LiveInfoEntity;
@@ -143,6 +147,28 @@ public class DataManager {
                     @Override
                     public LiveInfos apply(@NonNull LiveInfoEntity liveInfoEntity) throws Exception {
                         return liveInfoEntity.data();
+                    }
+                });
+    }
+
+    public Observable<BangumiResult> getBangumiInfo() {
+        return mRetrofitHelper.getBangumiService()
+                .getBangumiInfo()
+                .map(new Function<BangumiInfoEntity, BangumiResult>() {
+                    @Override
+                    public BangumiResult apply(@NonNull BangumiInfoEntity bangumiInfoEntity) throws Exception {
+                        return bangumiInfoEntity.result();
+                    }
+                });
+    }
+
+    public Observable<List<BangumiRecommendResult>> getBangumiRecommend() {
+        return mRetrofitHelper.getBangumiService()
+                .getBangumiRecommend()
+                .map(new Function<BangumiRecommendEntity, List<BangumiRecommendResult>>() {
+                    @Override
+                    public List<BangumiRecommendResult> apply(@NonNull BangumiRecommendEntity bangumiRecommendEntity) throws Exception {
+                        return bangumiRecommendEntity.result();
                     }
                 });
     }

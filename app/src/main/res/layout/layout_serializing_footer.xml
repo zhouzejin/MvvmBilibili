@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.bangumi.BangumiViewModel.BangumiBodyViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bangumi_body_margin"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.bangumiBody.get())}"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bangumi_body_image_height"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_default_image"
+            app:imageUrl="@{viewmodel.bangumiBody.get().img()}"/>
+    </android.support.v7.widget.CardView>
+
+</layout>

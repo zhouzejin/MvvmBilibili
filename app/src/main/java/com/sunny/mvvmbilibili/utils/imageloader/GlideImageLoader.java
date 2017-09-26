@@ -44,6 +44,7 @@ public class GlideImageLoader implements ImageLoader {
                 .load(imageUrl)
                 .placeholder(option.getPlaceHolder())
                 .dontAnimate()
+                .centerCrop()
                 .into(imageView);
     }
 
@@ -57,6 +58,7 @@ public class GlideImageLoader implements ImageLoader {
                 .placeholder(option.getPlaceHolder())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
+                .centerCrop()
                 .into(imageView);
     }
 

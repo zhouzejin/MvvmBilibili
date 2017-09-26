@@ -60,4 +60,11 @@
         <item>@string/focus</item>
         <item>@string/discover</item>
     </string-array>
+
+    <string-array name="bangumi_season">
+        <item>1月新番</item>
+        <item>4月新番</item>
+        <item>7月新番</item>
+        <item>10月新番</item>
+    </string-array>
 </resources>

@@ -23,6 +23,7 @@ import com.sunny.mvvmbilibili.injection.qualifier.FragmentContext;
 import com.sunny.mvvmbilibili.ui.base.BaseFragment;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.game.GameActivity;
+import com.sunny.mvvmbilibili.ui.home.bangumi.BangumiFragment;
 import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
@@ -100,7 +101,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
                     mFragments[i] = RecommendFragment.newInstance();
                     break;
                 case 2:
-                    mFragments[i] = MainFragment.newInstance();
+                    mFragments[i] = BangumiFragment.newInstance();
                     break;
                 case 3:
                     mFragments[i] = MainFragment.newInstance();

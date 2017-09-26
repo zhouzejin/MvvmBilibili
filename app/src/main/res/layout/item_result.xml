@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.bangumi.BangumiViewModel.ResultBodyViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bangumi_result_item_margin"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.result.get())}"
+        app:cardBackgroundColor="@color/card_view_background"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bangumi_result_item_height"
+                    android:scaleType="center"
+                    app:imageUrl="@{viewmodel.result.get().cover()}"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/bangumi_result_item_margin"
+                    android:background="@color/primary"
+                    android:padding="@dimen/bangumi_result_item_padding"
+                    android:src="@drawable/ic_new_text"
+                    android:visibility="@{viewmodel.isNew ? View.VISIBLE : View.INVISIBLE}"/>
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/bangumi_result_item_padding"
+                android:text="@{viewmodel.result.get().title()}"
+                android:textColor="@color/text_color_body"
+                android:textSize="@dimen/text_small_body"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/bangumi_result_item_padding"
+                android:text="@{viewmodel.result.get().desc()}"
+                android:textColor="@color/text_color_desc"
+                android:textSize="@dimen/text_small_body"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>

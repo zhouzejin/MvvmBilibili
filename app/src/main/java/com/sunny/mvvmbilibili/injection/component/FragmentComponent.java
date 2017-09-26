@@ -9,6 +9,7 @@ import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
 import com.sunny.mvvmbilibili.ui.history.HistoryFragment;
 import com.sunny.mvvmbilibili.ui.home.HomeFragment;
+import com.sunny.mvvmbilibili.ui.home.bangumi.BangumiFragment;
 import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
 import com.sunny.mvvmbilibili.ui.setting.SettingFragment;
@@ -33,5 +34,6 @@ public interface FragmentComponent {
     void inject(SettingFragment fragment);
     void inject(RecommendFragment fragment);
     void inject(LiveFragment fragment);
+    void inject(BangumiFragment fragment);
 
 }

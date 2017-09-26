@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/bangumi_footer_horizontal_margin"
+        android:layout_marginStart="@dimen/bangumi_footer_horizontal_margin"
+        android:layout_marginTop="@dimen/bangumi_footer_vertical_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/BilibiliTheme.Bangumi_TextView"
+            android:background="@drawable/shape_bg_yellow"
+            android:drawableStart="@drawable/ic_bangumi_following"
+            android:text="@string/following_bangumi"/>
+
+        <TextView
+            style="@style/BilibiliTheme.Bangumi_TextView"
+            android:background="@drawable/shape_bg_red"
+            android:drawableStart="@drawable/ic_bangumi_calendar"
+            android:text="@string/bangumi_list"/>
+
+        <TextView
+            style="@style/BilibiliTheme.Bangumi_TextView"
+            android:background="@drawable/shape_bg_blue"
+            android:drawableStart="@drawable/ic_bangumi_category"
+            android:text="@string/index"/>
+    </LinearLayout>
+
+</layout>

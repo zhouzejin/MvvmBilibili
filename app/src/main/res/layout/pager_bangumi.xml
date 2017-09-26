@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.bangumi.BangumiViewModel.BangumiHeadViewModel"/>
+    </data>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{(v) -> viewmodel.onClickItem(viewmodel.bangumiHead.get())}"
+        android:scaleType="centerCrop"
+        app:imageUrl="@{viewmodel.bangumiHead.get().img()}"/>
+
+</layout>

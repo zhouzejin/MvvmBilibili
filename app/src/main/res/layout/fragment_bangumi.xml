@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.bangumi.BangumiViewModel"/>
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshing="@{viewmodel.isRefreshing}"
+        app:colorSchemeResources="@{viewmodel.colorSchemeResources}"
+        app:onRefreshListener="@{() -> viewmodel.refresh()}">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"/>
+
+            <include
+                layout="@layout/layout_content_empty"
+                bind:viewmodel="@{viewmodel}"/>
+        </FrameLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</layout>

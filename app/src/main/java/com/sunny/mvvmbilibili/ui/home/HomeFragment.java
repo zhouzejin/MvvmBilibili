@@ -91,33 +91,16 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
 
     private void initViewPager() {
         mTitles = mActivity.getResources().getStringArray(R.array.sections);
-        mFragments = new Fragment[mTitles.length];
-        for (int i = 0; i < mFragments.length; i++) {
-            if (mFragments[i] != null) return;
-            switch (i) {
-                case 0:
-                    mFragments[i] = LiveFragment.newInstance();
-                    break;
-                case 1:
-                    mFragments[i] = RecommendFragment.newInstance();
-                    break;
-                case 2:
-                    mFragments[i] = BangumiFragment.newInstance();
-                    break;
-                case 3:
-                    mFragments[i] = RegionFragment.newInstance();
-                    break;
-                case 4:
-                    mFragments[i] = MainFragment.newInstance();
-                    break;
-                case 5:
-                    mFragments[i] = MainFragment.newInstance();
-                    break;
-            }
-        }
+        mFragments = new Fragment[]{
+                LiveFragment.newInstance(),
+                RecommendFragment.newInstance(),
+                BangumiFragment.newInstance(),
+                RegionFragment.newInstance(),
+                MainFragment.newInstance(),
+        };
 
         HomePagerAdapter adapter = new HomePagerAdapter(getChildFragmentManager());
-        mBinding.viewPager.setOffscreenPageLimit(5);
+        mBinding.viewPager.setOffscreenPageLimit(4);
         mBinding.viewPager.setAdapter(adapter);
         mBinding.viewPager.setCurrentItem(1);
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);

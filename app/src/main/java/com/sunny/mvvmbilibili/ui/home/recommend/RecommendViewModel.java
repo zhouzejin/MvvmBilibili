@@ -23,6 +23,7 @@ import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
+import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
 
 import java.util.List;
 import java.util.Random;
@@ -57,7 +58,9 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
     private Disposable mDisposable;
 
     @Inject
-    public RecommendViewModel(@ApplicationContext Context context, DataManager dataManager) {
+    public RecommendViewModel(ImageLoader imageLoader, @ApplicationContext Context context,
+                              DataManager dataManager) {
+        sImageLoader = imageLoader;
         mContext = context;
         mDataManager = dataManager;
     }

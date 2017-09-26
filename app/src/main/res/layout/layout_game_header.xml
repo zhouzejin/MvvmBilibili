@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/game_top_image_height"
         android:layout_marginBottom="@dimen/game_card_view_margin_vertical"
         android:onClick="@{(v) -> viewmodel.onClickHeader(viewmodel.vipgameinfo.get())}"
         app:imageUrl="@{viewmodel.vipgameinfo.get().imgPath()}"/>

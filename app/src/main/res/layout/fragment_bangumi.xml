@@ -13,9 +13,9 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:refreshing="@{viewmodel.isRefreshing}"
         app:colorSchemeResources="@{viewmodel.colorSchemeResources}"
-        app:onRefreshListener="@{() -> viewmodel.refresh()}">
+        app:onRefreshListener="@{() -> viewmodel.refresh()}"
+        app:refreshing="@{viewmodel.isRefreshing}">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -25,6 +25,7 @@
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants"
                 android:scrollbars="none"/>
 
             <include

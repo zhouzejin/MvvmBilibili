@@ -57,7 +57,6 @@
         <item>@string/recommend</item>
         <item>@string/bangumi</item>
         <item>@string/subarea</item>
-        <item>@string/focus</item>
         <item>@string/discover</item>
     </string-array>
 

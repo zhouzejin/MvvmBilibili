@@ -20,6 +20,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
             android:scrollbars="none"
             android:visibility="@{viewmodel.items.isEmpty() ? View.GONE : View.VISIBLE}"
             app:items="@{viewmodel.items}"/>

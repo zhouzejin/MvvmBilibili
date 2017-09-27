@@ -59,6 +59,7 @@ public class HomeActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO delete it after developing over.
         startService(SyncService.getStartIntent(this));
     }
 

@@ -8,7 +8,6 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
-import com.sunny.mvvmbilibili.utils.ToastUtil;
 
 import javax.inject.Inject;
 
@@ -46,7 +45,7 @@ public class HomeViewModel extends BaseViewModel<HomeMvvmView> {
         return new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                ToastUtil.showShort(mContext, "搜索中……");
+                getMvvmView().showSearchView(query);
                 return false;
             }
 

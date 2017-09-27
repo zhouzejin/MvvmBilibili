@@ -7,6 +7,7 @@ import com.sunny.mvvmbilibili.ui.browser.BrowserActivity;
 import com.sunny.mvvmbilibili.ui.game.GameActivity;
 import com.sunny.mvvmbilibili.ui.login.LoginActivity;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
+import com.sunny.mvvmbilibili.ui.search.SearchActivity;
 import com.sunny.mvvmbilibili.ui.splash.SplashActivity;
 
 import dagger.Subcomponent;
@@ -24,5 +25,6 @@ public interface ActivityComponent {
     void inject(GameActivity activity);
     void inject(BrowserActivity activity);
     void inject(OfflineActivity activity);
+    void inject(SearchActivity activity);
 
 }

@@ -14,4 +14,6 @@ public interface HomeMvvmView extends MvvmView {
 
     void toggleDrawerLayout();
 
+    void showSearchView(String query);
+
 }

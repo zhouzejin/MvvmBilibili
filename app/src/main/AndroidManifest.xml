@@ -66,6 +66,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/BilibiliTheme.TransparentStatus"/>
 
+        <!-- 搜索界面 -->
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BilibiliTheme.Search"/>
+
         <activity
             android:name=".ui.example.MainActivity"
             android:label="@string/app_name"/>

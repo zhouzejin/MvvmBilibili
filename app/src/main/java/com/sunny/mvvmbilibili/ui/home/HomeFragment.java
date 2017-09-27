@@ -28,6 +28,7 @@ import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
 import com.sunny.mvvmbilibili.ui.home.region.RegionFragment;
 import com.sunny.mvvmbilibili.ui.offline.OfflineActivity;
+import com.sunny.mvvmbilibili.ui.search.SearchActivity;
 
 import javax.inject.Inject;
 
@@ -100,7 +101,7 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
         };
 
         HomePagerAdapter adapter = new HomePagerAdapter(getChildFragmentManager());
-        mBinding.viewPager.setOffscreenPageLimit(4);
+        mBinding.viewPager.setOffscreenPageLimit(mFragments.length - 1);
         mBinding.viewPager.setAdapter(adapter);
         mBinding.viewPager.setCurrentItem(1);
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
@@ -177,6 +178,11 @@ public class HomeFragment extends BaseFragment implements HomeMvvmView {
         if (mActivity instanceof HomeActivity) {
             ((HomeActivity) mActivity).toggleDrawer();
         }
+    }
+
+    @Override
+    public void showSearchView(String query) {
+        startActivity(SearchActivity.getStartIntent(mContext, query));
     }
 
 }

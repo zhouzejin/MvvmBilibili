@@ -31,6 +31,7 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
 
     private T mMvvmView;
 
+    /** 由于是static变量，只需要在首次使用时inject */
     protected static ImageLoader sImageLoader;
 
     public final ObservableField<Boolean> isShowProgress = new ObservableField<>();

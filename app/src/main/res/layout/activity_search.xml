@@ -5,7 +5,7 @@
 
         <variable
             name="viewmodel"
-            type="com.sunny.mvvmbilibili.ui.search.SearchMvvmView"/>
+            type="com.sunny.mvvmbilibili.ui.search.SearchViewModel"/>
     </data>
 
     <LinearLayout

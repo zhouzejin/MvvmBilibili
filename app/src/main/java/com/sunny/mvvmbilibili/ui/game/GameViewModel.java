@@ -12,7 +12,6 @@ import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
-import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -44,8 +43,7 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
     private Disposable mDisposable;
 
     @Inject
-    public GameViewModel(DataManager dataManager, ImageLoader imageLoader) {
-        sImageLoader = imageLoader;
+    public GameViewModel(DataManager dataManager) {
         mDataManager = dataManager;
     }
 

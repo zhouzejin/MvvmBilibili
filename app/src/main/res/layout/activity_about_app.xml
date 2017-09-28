@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,21 +15,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/app_bar_elevation">
-
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:navigationIcon="@drawable/ic_back"
-                app:navigationOnClickListener="@{(v) -> activity.onClickNavigation()}"
-                app:popupTheme="@style/Theme.AppCompat.Light"
-                app:title="@string/about_app"/>
-        </android.support.design.widget.AppBarLayout>
+        <include
+            layout="@layout/layout_toolbar"
+            bind:layout="@{activity.toolbarLayout}"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

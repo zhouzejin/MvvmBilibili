@@ -4,6 +4,7 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
 import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
+import com.sunny.mvvmbilibili.ui.layout.ToolbarLayout;
 
 import javax.inject.Inject;
 
@@ -15,6 +16,22 @@ import javax.inject.Inject;
 @ConfigPersistent
 public class AttentionViewModel extends BaseViewModel<AttentionMvvmView> {
 
+    public final ToolbarLayout toolbarLayout = new ToolbarLayout() {
+        @Override
+        public int getNavigationIcon() {
+            return R.drawable.ic_drawer;
+        }
+
+        @Override
+        public int getToolbarTitle() {
+            return R.string.action_attention;
+        }
+
+        @Override
+        public void onClickNavigation() {
+            getMvvmView().toggleDrawerLayout();
+        }
+    };
     public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
         @Override
         public int getContentEmptyImg() {
@@ -39,21 +56,6 @@ public class AttentionViewModel extends BaseViewModel<AttentionMvvmView> {
     @Override
     public void detachView() {
         super.detachView();
-    }
-
-    @Override
-    public int getNavigationIcon() {
-        return R.drawable.ic_drawer;
-    }
-
-    @Override
-    public int getToolbarTitle() {
-        return R.string.action_attention;
-    }
-
-    @Override
-    public void onClickNavigation() {
-        getMvvmView().toggleDrawerLayout();
     }
 
 }

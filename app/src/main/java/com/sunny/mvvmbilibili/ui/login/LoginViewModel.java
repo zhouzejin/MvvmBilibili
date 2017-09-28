@@ -11,6 +11,7 @@ import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ToolbarLayout;
 import com.sunny.mvvmbilibili.utils.NetworkUtil;
 import com.sunny.mvvmbilibili.utils.ToastUtil;
 
@@ -23,6 +24,23 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class LoginViewModel extends BaseViewModel<LoginMvvmView> {
+
+    public final ToolbarLayout toolbarLayout = new ToolbarLayout() {
+        @Override
+        public int getNavigationIcon() {
+            return R.drawable.ic_close;
+        }
+
+        @Override
+        public int getToolbarTitle() {
+            return R.string.login;
+        }
+
+        @Override
+        public void onClickNavigation() {
+            getMvvmView().closeView();
+        }
+    };
 
     // These observable fields will update Views automatically
     public final ObservableField<String> username = new ObservableField<>();
@@ -47,21 +65,6 @@ public class LoginViewModel extends BaseViewModel<LoginMvvmView> {
     @Override
     public void detachView() {
         super.detachView();
-    }
-
-    @Override
-    public int getNavigationIcon() {
-        return R.drawable.ic_close;
-    }
-
-    @Override
-    public int getToolbarTitle() {
-        return R.string.login;
-    }
-
-    @Override
-    public void onClickNavigation() {
-        getMvvmView().closeView();
     }
 
     public void onUsernameFocusChange(boolean hasFocus) {

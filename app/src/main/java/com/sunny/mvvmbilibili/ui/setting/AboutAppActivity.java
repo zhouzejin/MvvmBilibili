@@ -8,6 +8,7 @@ import android.databinding.ObservableField;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.databinding.ActivityAboutAppBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
+import com.sunny.mvvmbilibili.ui.layout.ToolbarLayout;
 import com.sunny.mvvmbilibili.utils.SystemUtil;
 import com.sunny.mvvmbilibili.utils.factory.DialogFactory;
 
@@ -16,6 +17,18 @@ import com.sunny.mvvmbilibili.utils.factory.DialogFactory;
  * Created by Zhou Zejin on 2017/8/30.
  */
 public class AboutAppActivity extends BaseActivity {
+
+    public final ToolbarLayout toolbarLayout = new ToolbarLayout() {
+        @Override
+        public int getToolbarTitle() {
+            return R.string.about_app;
+        }
+
+        @Override
+        public void onClickNavigation() {
+            onBackPressed();
+        }
+    };
 
     public final ObservableField<String> version = new ObservableField<>();
 
@@ -31,10 +44,6 @@ public class AboutAppActivity extends BaseActivity {
         setContentView(binding.getRoot());
 
         version.set(getString(R.string.version, SystemUtil.getVersionName(this)));
-    }
-
-    public void onClickNavigation() {
-        onBackPressed();
     }
 
     public void share() {

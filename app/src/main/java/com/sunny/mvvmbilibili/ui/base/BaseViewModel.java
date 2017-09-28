@@ -1,12 +1,10 @@
 package com.sunny.mvvmbilibili.ui.base;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingMethod;
 import android.databinding.BindingMethods;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,19 +58,6 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
             super("Please call ViewModel.attachView(MvvmView) before" +
                     " requesting data to the ViewModel");
         }
-    }
-
-    @Bindable
-    public @DrawableRes int getNavigationIcon() {
-        return R.drawable.ic_back;
-    }
-
-    @Bindable
-    public @StringRes int getToolbarTitle() {
-        return R.string.app_name;
-    }
-
-    public void onClickNavigation() {
     }
 
     /*****

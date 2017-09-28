@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="viewmodel"
-            type="com.sunny.mvvmbilibili.ui.base.BaseViewModel"/>
+            name="layout"
+            type="com.sunny.mvvmbilibili.ui.layout.ToolbarLayout"/>
     </data>
 
     <android.support.design.widget.AppBarLayout
@@ -20,10 +20,10 @@
             android:layout_height="?android:actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@{viewmodel.navigationIcon, default=@drawable/ic_back}"
-            app:navigationOnClickListener="@{(v) -> viewmodel.onClickNavigation()}"
+            app:navigationIcon="@{layout.navigationIcon, default=@drawable/ic_back}"
+            app:navigationOnClickListener="@{(v) -> layout.onClickNavigation()}"
             app:popupTheme="@style/Theme.AppCompat.Light"
-            app:title="@{viewmodel.toolbarTitle, default=@string/app_name}"/>
+            app:title="@{layout.toolbarTitle, default=@string/app_name}"/>
     </android.support.design.widget.AppBarLayout>
 
 </layout>

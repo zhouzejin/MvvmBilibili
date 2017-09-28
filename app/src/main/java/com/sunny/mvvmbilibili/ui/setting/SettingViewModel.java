@@ -8,6 +8,7 @@ import com.sunny.mvvmbilibili.data.DataManager;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ToolbarLayout;
 import com.sunny.mvvmbilibili.utils.SystemUtil;
 
 import javax.inject.Inject;
@@ -19,6 +20,23 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class SettingViewModel extends BaseViewModel<SettingMvvmView> {
+
+    public final ToolbarLayout toolbarLayout = new ToolbarLayout() {
+        @Override
+        public int getNavigationIcon() {
+            return R.drawable.ic_drawer;
+        }
+
+        @Override
+        public int getToolbarTitle() {
+            return R.string.action_setting;
+        }
+
+        @Override
+        public void onClickNavigation() {
+            getMvvmView().toggleDrawerLayout();
+        }
+    };
 
     private final Context mContext;
     private final DataManager mDataManager;
@@ -42,21 +60,6 @@ public class SettingViewModel extends BaseViewModel<SettingMvvmView> {
     @Override
     public boolean isViewAttached() {
         return super.isViewAttached();
-    }
-
-    @Override
-    public int getNavigationIcon() {
-        return R.drawable.ic_drawer;
-    }
-
-    @Override
-    public int getToolbarTitle() {
-        return R.string.action_setting;
-    }
-
-    @Override
-    public void onClickNavigation() {
-        getMvvmView().toggleDrawerLayout();
     }
 
     @Bindable

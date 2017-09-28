@@ -11,6 +11,7 @@ import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
 import com.sunny.mvvmbilibili.ui.layout.ProgressLayout;
+import com.sunny.mvvmbilibili.ui.layout.ToolbarLayout;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
@@ -35,6 +36,17 @@ import io.reactivex.schedulers.Schedulers;
 @ConfigPersistent
 public class GameViewModel extends BaseViewModel<GameMvvmView> {
 
+    public final ToolbarLayout toolbarLayout = new ToolbarLayout() {
+        @Override
+        public int getToolbarTitle() {
+            return R.string.game_center;
+        }
+
+        @Override
+        public void onClickNavigation() {
+            getMvvmView().backView();
+        }
+    };
     public final ProgressLayout progressLayout = new ProgressLayout();
 
     // These observable fields will update Views automatically
@@ -59,16 +71,6 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
     public void detachView() {
         super.detachView();
         RxUtil.dispose(mDisposable);
-    }
-
-    @Override
-    public int getToolbarTitle() {
-        return R.string.game_center;
-    }
-
-    @Override
-    public void onClickNavigation() {
-        getMvvmView().backView();
     }
 
     public void loadData() {

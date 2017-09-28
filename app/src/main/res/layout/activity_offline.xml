@@ -18,7 +18,7 @@
         <include
             android:id="@+id/layout_toolbar"
             layout="@layout/layout_toolbar"
-            bind:viewmodel="@{viewmodel}"/>
+            bind:layout="@{viewmodel.toolbarLayout}"/>
 
         <FrameLayout
             android:layout_width="match_parent"

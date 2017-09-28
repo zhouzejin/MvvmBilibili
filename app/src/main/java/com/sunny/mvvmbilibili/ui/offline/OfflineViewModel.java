@@ -9,6 +9,7 @@ import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
 import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
+import com.sunny.mvvmbilibili.ui.layout.ToolbarLayout;
 import com.sunny.mvvmbilibili.utils.FileUtil;
 
 import javax.inject.Inject;
@@ -21,6 +22,17 @@ import javax.inject.Inject;
 @ConfigPersistent
 public class OfflineViewModel extends BaseViewModel<OfflineMvvmView> {
 
+    public ToolbarLayout toolbarLayout = new ToolbarLayout() {
+        @Override
+        public void onClickNavigation() {
+            getMvvmView().backView();
+        }
+
+        @Override
+        public int getToolbarTitle() {
+            return R.string.offline_cache;
+        }
+    };
     public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
         @Override
         public int getContentEmptyImg() {
@@ -53,16 +65,6 @@ public class OfflineViewModel extends BaseViewModel<OfflineMvvmView> {
     @Override
     public boolean isViewAttached() {
         return super.isViewAttached();
-    }
-
-    @Override
-    public void onClickNavigation() {
-        getMvvmView().backView();
-    }
-
-    @Override
-    public int getToolbarTitle() {
-        return R.string.offline_cache;
     }
 
     @Bindable

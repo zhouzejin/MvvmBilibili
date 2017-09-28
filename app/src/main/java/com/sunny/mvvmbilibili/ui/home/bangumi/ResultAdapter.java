@@ -24,7 +24,7 @@ public class ResultAdapter extends BaseAdapter<BangumiRecommendResult> {
     }
 
     @Override
-    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent) {
+    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent, int viewType) {
         return DataBindingUtil.inflate(inflater, R.layout.item_result, parent, false);
     }
 

@@ -21,11 +21,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Bi
     @Override
     public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ViewDataBinding binding = getBinding(inflater, parent);
+        ViewDataBinding binding = getBinding(inflater, parent, viewType);
         return new BindingViewHolder<>(binding);
     }
 
-    public abstract ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent);
+    public abstract ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent, int viewType);
 
     @Override
     public void onBindViewHolder(final BindingViewHolder holder, int position) {

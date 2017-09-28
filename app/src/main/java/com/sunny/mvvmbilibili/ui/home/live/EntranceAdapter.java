@@ -25,7 +25,7 @@ public class EntranceAdapter extends BaseAdapter<LiveEntranceIcons> {
     }
 
     @Override
-    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent) {
+    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent, int viewType) {
         return DataBindingUtil.inflate(inflater, R.layout.item_entrance, parent, false);
     }
 

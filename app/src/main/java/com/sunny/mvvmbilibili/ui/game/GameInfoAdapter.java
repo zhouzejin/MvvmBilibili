@@ -27,7 +27,7 @@ public class GameInfoAdapter extends BaseAdapter<GameInfo> {
     }
 
     @Override
-    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent) {
+    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent, int viewType) {
         return DataBindingUtil.inflate(inflater, R.layout.item_game, parent, false);
     }
 

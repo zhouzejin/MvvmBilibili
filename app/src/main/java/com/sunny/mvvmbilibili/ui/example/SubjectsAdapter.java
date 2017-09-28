@@ -22,7 +22,7 @@ public class SubjectsAdapter extends BaseAdapter<Subject> {
     }
 
     @Override
-    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent) {
+    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent, int viewType) {
         return ItemSubjectBinding.inflate(inflater, parent, false);
     }
 

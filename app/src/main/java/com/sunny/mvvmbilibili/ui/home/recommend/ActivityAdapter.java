@@ -24,7 +24,7 @@ public class ActivityAdapter extends BaseAdapter<RecommendBody> {
     }
 
     @Override
-    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent) {
+    public ViewDataBinding getBinding(LayoutInflater inflater, ViewGroup parent, int viewType) {
         return ItemActivityBinding.inflate(inflater, parent, false);
     }
 

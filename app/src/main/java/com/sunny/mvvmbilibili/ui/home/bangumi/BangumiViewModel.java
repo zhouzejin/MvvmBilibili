@@ -138,7 +138,9 @@ public class BangumiViewModel extends BaseViewModel<BangumiMvvmView> {
                     public void onError(@NonNull Throwable e) {
                         LogUtil.e(e, "There was an error loading the BangumiInfo.");
                         isRefreshing.set(false);
-                        isShowContentEmpty.set(true);
+                        if (bangumiAd.get() == null && bangumiPrevious.get() == null &&
+                                bangumiSerializings.isEmpty() && recommendResults.isEmpty())
+                            isShowContentEmpty.set(true);
                         getMvvmView().showErrorHint();
                     }
 

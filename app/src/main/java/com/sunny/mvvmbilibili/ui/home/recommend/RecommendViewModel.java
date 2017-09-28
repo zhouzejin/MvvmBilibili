@@ -138,7 +138,8 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
                     public void onError(@NonNull Throwable e) {
                         LogUtil.e(e, "There was an error loading the RecommendInfo.");
                         isRefreshing.set(false);
-                        isShowContentEmpty.set(true);
+                        if (banners.isEmpty() && results.isEmpty())
+                            isShowContentEmpty.set(true);
                         getMvvmView().showErrorHint();
                     }
 

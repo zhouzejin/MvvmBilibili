@@ -122,7 +122,8 @@ public class LiveViewModel extends BaseViewModel<LiveMvvmView> {
                     public void onError(@NonNull Throwable e) {
                         LogUtil.e(e, "There was an error loading the LiveInfo.");
                         isRefreshing.set(false);
-                        isShowContentEmpty.set(true);
+                        if (banners.isEmpty() && entranceIconses.isEmpty() && partitions.isEmpty())
+                            isShowContentEmpty.set(true);
                         getMvvmView().showErrorHint();
                     }
 

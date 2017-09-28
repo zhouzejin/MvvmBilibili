@@ -5,7 +5,6 @@ import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingMethod;
 import android.databinding.BindingMethods;
-import android.databinding.ObservableField;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
@@ -33,8 +32,6 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
 
     /** 由于是static变量，只需要在首次使用时inject */
     protected static ImageLoader sImageLoader;
-
-    public final ObservableField<Boolean> isShowProgress = new ObservableField<>();
 
     @Override
     public void attachView(T mvvmView) {
@@ -76,14 +73,6 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     }
 
     public void onClickNavigation() {
-    }
-
-    public void showProgress() {
-        isShowProgress.set(true);
-    }
-
-    public void hideProgress() {
-        isShowProgress.set(false);
     }
 
     /*****

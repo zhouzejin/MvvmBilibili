@@ -27,7 +27,7 @@
 
         <include
             layout="@layout/layout_progress"
-            bind:viewmodel="@{viewmodel}"/>
+            bind:layout="@{viewmodel.progressLayout}"/>
     </FrameLayout>
 
 </layout>

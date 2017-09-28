@@ -10,6 +10,7 @@ import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ProgressLayout;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
@@ -33,6 +34,8 @@ import io.reactivex.schedulers.Schedulers;
 
 @ConfigPersistent
 public class GameViewModel extends BaseViewModel<GameMvvmView> {
+
+    public final ProgressLayout progressLayout = new ProgressLayout();
 
     // These observable fields will update Views automatically
     public final ObservableField<VipGameInfo> vipgameinfo = new ObservableField<>();
@@ -78,7 +81,7 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
                         mDisposable = disposable;
-                        showProgress();
+                        progressLayout.showProgress();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -106,13 +109,13 @@ public class GameViewModel extends BaseViewModel<GameMvvmView> {
                     public void onNext(@NonNull List<GameInfo> gameInfos) {
                         items.clear();
                         items.addAll(gameInfos);
-                        hideProgress();
+                        progressLayout.hideProgress();
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
                         LogUtil.e(e, "There was an error loading the GameInfo.");
-                        hideProgress();
+                        progressLayout.hideProgress();
                     }
 
                     @Override

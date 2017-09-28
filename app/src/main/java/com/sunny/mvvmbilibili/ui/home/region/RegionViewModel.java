@@ -10,6 +10,7 @@ import com.sunny.mvvmbilibili.data.model.pojo.Region;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ProgressLayout;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class RegionViewModel extends BaseViewModel<RegionMvvmView> {
             R.drawable.ic_category_tv,
             R.drawable.ic_category_gamecenter,
     };
+
+    public final ProgressLayout progressLayout = new ProgressLayout();
 
     public final ObservableList<Region> items = new ObservableArrayList<>();
 
@@ -94,7 +97,7 @@ public class RegionViewModel extends BaseViewModel<RegionMvvmView> {
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        showProgress();
+                        progressLayout.showProgress();
                         mDisposable = disposable;
                     }
                 })
@@ -102,7 +105,7 @@ public class RegionViewModel extends BaseViewModel<RegionMvvmView> {
                 .subscribe(new Consumer<List<Region>>() {
                     @Override
                     public void accept(List<Region> regions) throws Exception {
-                        hideProgress();
+                        progressLayout.hideProgress();
                         items.clear();
                         items.addAll(regions);
                     }

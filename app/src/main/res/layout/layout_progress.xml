@@ -7,17 +7,17 @@
         <import type="android.view.View"/>
 
         <variable
-            name="viewmodel"
-            type="com.sunny.mvvmbilibili.ui.base.BaseViewModel"/>
+            name="layout"
+            type="com.sunny.mvvmbilibili.ui.layout.ProgressLayout"/>
     </data>
 
     <com.sunny.mvvmbilibili.widget.CircleProgressView
         android:layout_width="@dimen/circle_progress_view_default_size"
         android:layout_height="@dimen/circle_progress_view_default_size"
         android:layout_gravity="center"
-        android:visibility="@{viewmodel.isShowProgress ? View.VISIBLE : View.GONE}"
+        android:visibility="@{layout.isShowProgress ? View.VISIBLE : View.GONE}"
         app:matProg_barColor="?attr/colorPrimary"
         app:matProg_barWidth="@dimen/circle_progress_view_default_border_width"
-        app:spin="@{viewmodel.isShowProgress}"/>
+        app:spin="@{layout.isShowProgress}"/>
 
 </layout>

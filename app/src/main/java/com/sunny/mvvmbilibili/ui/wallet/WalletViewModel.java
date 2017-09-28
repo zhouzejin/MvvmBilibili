@@ -3,6 +3,7 @@ package com.sunny.mvvmbilibili.ui.wallet;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,18 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class WalletViewModel extends BaseViewModel<WalletMvvmView> {
+
+    public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_no_wallet;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.no_wallet;
+        }
+    };
 
     @Inject
     public WalletViewModel() {
@@ -36,16 +49,6 @@ public class WalletViewModel extends BaseViewModel<WalletMvvmView> {
     @Override
     public int getToolbarTitle() {
         return R.string.action_wallet;
-    }
-
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_no_wallet;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.no_wallet;
     }
 
     @Override

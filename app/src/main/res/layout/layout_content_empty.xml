@@ -6,8 +6,8 @@
         <import type="android.view.View"/>
 
         <variable
-            name="viewmodel"
-            type="com.sunny.mvvmbilibili.ui.base.BaseViewModel"/>
+            name="layout"
+            type="com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout"/>
     </data>
 
     <TextView
@@ -15,11 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:drawablePadding="@dimen/empty_content_padding"
-        android:drawableTop="@{viewmodel.contentEmptyImg}"
+        android:drawableTop="@{layout.contentEmptyImg}"
         android:gravity="center"
-        android:text="@{viewmodel.contentEmptyHint}"
+        android:text="@{layout.contentEmptyHint}"
         android:textColor="@color/text_color_desc"
         android:textSize="@dimen/text_small_body"
-        android:visibility="@{viewmodel.isShowContentEmpty ? View.VISIBLE : View.GONE}"/>
+        android:visibility="@{layout.isShowContentEmpty ? View.VISIBLE : View.GONE}"/>
 
 </layout>

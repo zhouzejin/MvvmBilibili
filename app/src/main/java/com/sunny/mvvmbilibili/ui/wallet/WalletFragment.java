@@ -56,7 +56,7 @@ public class WalletFragment extends BaseFragment implements WalletMvvmView {
 
         mViewModel.attachView(this);
         mBinding.setViewmodel(mViewModel);
-        mViewModel.isShowContentEmpty.set(true);
+        mViewModel.contentEmptyLayout.isShowContentEmpty.set(true);
     }
 
     @Override

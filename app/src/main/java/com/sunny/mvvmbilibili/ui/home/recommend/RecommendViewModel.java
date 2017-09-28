@@ -21,6 +21,7 @@ import com.sunny.mvvmbilibili.data.model.pojo.RecommendHead;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 import com.sunny.mvvmbilibili.utils.imageloader.ImageLoader;
@@ -46,6 +47,18 @@ import io.reactivex.schedulers.Schedulers;
 
 @ConfigPersistent
 public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
+
+    public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_load_error;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.load_error;
+        }
+    };
 
     // These observable fields will update Views automatically
     public final ObservableField<Boolean> isRefreshing = new ObservableField<>();
@@ -74,16 +87,6 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
     public void detachView() {
         RxUtil.dispose(mDisposable);
         super.detachView();
-    }
-
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_load_error;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.load_error;
     }
 
     @Bindable
@@ -128,7 +131,7 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
                     @Override
                     public void onNext(@NonNull List<RecommendResult> recommendResults) {
                         isRefreshing.set(false);
-                        isShowContentEmpty.set(false);
+                        contentEmptyLayout.isShowContentEmpty.set(false);
                         results.clear();
                         results.addAll(recommendResults);
                         getMvvmView().showRecommendInfo();
@@ -139,7 +142,7 @@ public class RecommendViewModel extends BaseViewModel<RecommendMvvmView> {
                         LogUtil.e(e, "There was an error loading the RecommendInfo.");
                         isRefreshing.set(false);
                         if (banners.isEmpty() && results.isEmpty())
-                            isShowContentEmpty.set(true);
+                            contentEmptyLayout.isShowContentEmpty.set(true);
                         getMvvmView().showErrorHint();
                     }
 

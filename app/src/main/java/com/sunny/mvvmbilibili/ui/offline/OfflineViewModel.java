@@ -8,6 +8,7 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 import com.sunny.mvvmbilibili.utils.FileUtil;
 
 import javax.inject.Inject;
@@ -19,6 +20,18 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class OfflineViewModel extends BaseViewModel<OfflineMvvmView> {
+
+    public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_no_cache;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.no_cache;
+        }
+    };
 
     private final Context mContext;
 
@@ -50,16 +63,6 @@ public class OfflineViewModel extends BaseViewModel<OfflineMvvmView> {
     @Override
     public int getToolbarTitle() {
         return R.string.offline_cache;
-    }
-
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_no_cache;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.no_cache;
     }
 
     @Bindable

@@ -3,6 +3,7 @@ package com.sunny.mvvmbilibili.ui.history;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,18 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class HistoryViewModel extends BaseViewModel<HistoryMvvmView> {
+
+    public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_no_history;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.no_history;
+        }
+    };
 
     @Inject
     public HistoryViewModel() {
@@ -36,16 +49,6 @@ public class HistoryViewModel extends BaseViewModel<HistoryMvvmView> {
     @Override
     public int getToolbarTitle() {
         return R.string.action_history;
-    }
-
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_no_history;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.no_history;
     }
 
     @Override

@@ -21,6 +21,7 @@ import com.sunny.mvvmbilibili.data.model.pojo.BangumiList;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
@@ -44,6 +45,18 @@ import io.reactivex.schedulers.Schedulers;
 
 @ConfigPersistent
 public class BangumiViewModel extends BaseViewModel<BangumiMvvmView> {
+
+    public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_load_error;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.load_error;
+        }
+    };
 
     // These observable fields will update Views automatically
     public final ObservableField<Boolean> isRefreshing = new ObservableField<>();
@@ -72,16 +85,6 @@ public class BangumiViewModel extends BaseViewModel<BangumiMvvmView> {
     @Override
     public void detachView() {
         super.detachView();
-    }
-
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_load_error;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.load_error;
     }
 
     @Bindable
@@ -128,7 +131,7 @@ public class BangumiViewModel extends BaseViewModel<BangumiMvvmView> {
                     @Override
                     public void onNext(@NonNull List<BangumiRecommendResult> bangumiRecommendResults) {
                         isRefreshing.set(false);
-                        isShowContentEmpty.set(false);
+                        contentEmptyLayout.isShowContentEmpty.set(false);
                         recommendResults.clear();
                         recommendResults.addAll(bangumiRecommendResults);
                         getMvvmView().showBangumiInfo();
@@ -140,7 +143,7 @@ public class BangumiViewModel extends BaseViewModel<BangumiMvvmView> {
                         isRefreshing.set(false);
                         if (bangumiAd.get() == null && bangumiPrevious.get() == null &&
                                 bangumiSerializings.isEmpty() && recommendResults.isEmpty())
-                            isShowContentEmpty.set(true);
+                            contentEmptyLayout.isShowContentEmpty.set(true);
                         getMvvmView().showErrorHint();
                     }
 

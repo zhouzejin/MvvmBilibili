@@ -30,7 +30,7 @@
 
             <include
                 layout="@layout/layout_content_empty"
-                bind:viewmodel="@{viewmodel}"/>
+                bind:layout="@{viewmodel.contentEmptyLayout}"/>
         </FrameLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 

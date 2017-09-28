@@ -56,7 +56,7 @@ public class FavouriteFragment extends BaseFragment implements FavouriteMvvmView
 
         mViewModel.attachView(this);
         mBinding.setViewmodel(mViewModel);
-        mViewModel.isShowContentEmpty.set(true);
+        mViewModel.contentEmptyLayout.isShowContentEmpty.set(true);
     }
 
     @Override

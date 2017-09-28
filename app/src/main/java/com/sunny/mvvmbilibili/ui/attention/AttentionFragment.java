@@ -56,7 +56,7 @@ public class AttentionFragment extends BaseFragment implements AttentionMvvmView
 
         mViewModel.attachView(this);
         mBinding.setViewmodel(mViewModel);
-        mViewModel.isShowContentEmpty.set(true);
+        mViewModel.contentEmptyLayout.isShowContentEmpty.set(true);
     }
 
     @Override

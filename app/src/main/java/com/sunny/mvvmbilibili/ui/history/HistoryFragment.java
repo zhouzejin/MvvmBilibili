@@ -56,7 +56,7 @@ public class HistoryFragment extends BaseFragment implements HistoryMvvmView {
 
         mViewModel.attachView(this);
         mBinding.setViewmodel(mViewModel);
-        mViewModel.isShowContentEmpty.set(true);
+        mViewModel.contentEmptyLayout.isShowContentEmpty.set(true);
     }
 
     @Override

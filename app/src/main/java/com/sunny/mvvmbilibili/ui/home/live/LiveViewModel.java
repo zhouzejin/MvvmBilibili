@@ -19,6 +19,7 @@ import com.sunny.mvvmbilibili.data.model.bean.LivePartitions;
 import com.sunny.mvvmbilibili.injection.qualifier.ApplicationContext;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 import com.sunny.mvvmbilibili.utils.LogUtil;
 import com.sunny.mvvmbilibili.utils.RxUtil;
 
@@ -41,6 +42,18 @@ import io.reactivex.schedulers.Schedulers;
 
 @ConfigPersistent
 public class LiveViewModel extends BaseViewModel<LiveMvvmView> {
+
+    public ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_load_error;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.load_error;
+        }
+    };
 
     // These observable fields will update Views automatically
     public final ObservableField<Boolean> isRefreshing = new ObservableField<>();
@@ -70,16 +83,6 @@ public class LiveViewModel extends BaseViewModel<LiveMvvmView> {
         super.detachView();
     }
 
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_load_error;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.load_error;
-    }
-
     @Bindable public @ColorRes int[] getColorSchemeResources() {
         return new int[]{R.color.primary};
     }
@@ -106,7 +109,7 @@ public class LiveViewModel extends BaseViewModel<LiveMvvmView> {
                     @Override
                     public void onNext(@NonNull LiveInfos liveInfos) {
                         isRefreshing.set(false);
-                        isShowContentEmpty.set(false);
+                        contentEmptyLayout.isShowContentEmpty.set(false);
 
                         banners.clear();
                         banners.addAll(liveInfos.banner());
@@ -123,7 +126,7 @@ public class LiveViewModel extends BaseViewModel<LiveMvvmView> {
                         LogUtil.e(e, "There was an error loading the LiveInfo.");
                         isRefreshing.set(false);
                         if (banners.isEmpty() && entranceIconses.isEmpty() && partitions.isEmpty())
-                            isShowContentEmpty.set(true);
+                            contentEmptyLayout.isShowContentEmpty.set(true);
                         getMvvmView().showErrorHint();
                     }
 

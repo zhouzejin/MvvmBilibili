@@ -35,7 +35,6 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     protected static ImageLoader sImageLoader;
 
     public final ObservableField<Boolean> isShowProgress = new ObservableField<>();
-    public final ObservableField<Boolean> isShowContentEmpty = new ObservableField<>();
 
     @Override
     public void attachView(T mvvmView) {
@@ -74,16 +73,6 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
     @Bindable
     public @StringRes int getToolbarTitle() {
         return R.string.app_name;
-    }
-
-    @Bindable
-    public @DrawableRes int getContentEmptyImg() {
-        return R.drawable.img_default_image;
-    }
-
-    @Bindable
-    public @StringRes int getContentEmptyHint() {
-        return R.string.content_empty;
     }
 
     public void onClickNavigation() {

@@ -3,6 +3,7 @@ package com.sunny.mvvmbilibili.ui.attention;
 import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.injection.scope.ConfigPersistent;
 import com.sunny.mvvmbilibili.ui.base.BaseViewModel;
+import com.sunny.mvvmbilibili.ui.layout.ContentEmptyLayout;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,18 @@ import javax.inject.Inject;
 
 @ConfigPersistent
 public class AttentionViewModel extends BaseViewModel<AttentionMvvmView> {
+
+    public final ContentEmptyLayout contentEmptyLayout = new ContentEmptyLayout() {
+        @Override
+        public int getContentEmptyImg() {
+            return R.drawable.img_no_attention;
+        }
+
+        @Override
+        public int getContentEmptyHint() {
+            return R.string.no_attention;
+        }
+    };
 
     @Inject
     public AttentionViewModel() {
@@ -36,16 +49,6 @@ public class AttentionViewModel extends BaseViewModel<AttentionMvvmView> {
     @Override
     public int getToolbarTitle() {
         return R.string.action_attention;
-    }
-
-    @Override
-    public int getContentEmptyImg() {
-        return R.drawable.img_no_attention;
-    }
-
-    @Override
-    public int getContentEmptyHint() {
-        return R.string.no_attention;
     }
 
     @Override

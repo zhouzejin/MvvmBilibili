@@ -26,7 +26,7 @@
 
             <include
                 layout="@layout/layout_content_empty"
-                bind:viewmodel="@{viewmodel}"/>
+                bind:layout="@{viewmodel.contentEmptyLayout}"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

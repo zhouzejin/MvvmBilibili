@@ -9,7 +9,10 @@
     <string name="share_hint">来自「哔哩哔哩」的分享：</string>
     <string name="content_empty">内容为空</string>
     <string name="load_error">加载失败~(≧▽≦)~啦啦啦&#8230;</string>
+    <string name="load_over">(○｀ 3′○)再怎么找也没有啦！</string>
     <string name="data_load_error">数据加载失败，请重新加载或者检查网络是否链接</string>
+    <string name="space">&#160;</string>
+    <string name="enter">\n</string>
 
     <string name="action_more">更多选项</string>
     <string name="action_home">主页</string>
@@ -100,6 +103,19 @@
     <string name="no_vip"><Data><![CDATA[您还不是&#160;&#160;<big><b>大会员</b></big>&#160;&#160;哦]]></Data></string>
     <string name="vip_desc">黑科技在召唤</string>
     <string name="immediately_open">立即开通</string>
+
+    <string name="archive">综合</string>
+    <string name="search_title">%1$s(%2$s)</string>
+    <string name="season_newest0">%1$s，更新至第%2$d话</string>
+    <string name="season_newest1">%1$s，%2$d话全</string>
+    <string name="movie">电影</string>
+    <string name="area">地区：%1$s</string>
+    <string name="actors">演员：%1$s</string>
+    <string name="movie_length">%1$d分钟</string>
+    <string name="default_sort">默认排序</string>
+    <string name="all_time">全部时长</string>
+    <string name="all_section">全部分区</string>
+    <string name="loading">加载中</string>
 
     <string name="dialog_action_ok">确定</string>
     <string name="dialog_action_cancel">取消</string>

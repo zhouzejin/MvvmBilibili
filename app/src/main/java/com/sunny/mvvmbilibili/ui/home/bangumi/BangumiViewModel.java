@@ -78,13 +78,13 @@ public class BangumiViewModel extends BaseViewModel<BangumiMvvmView> {
 
     @Override
     public void attachView(BangumiMvvmView mvvmView) {
-        RxUtil.dispose(mDisposable);
         super.attachView(mvvmView);
     }
 
     @Override
     public void detachView() {
         super.detachView();
+        RxUtil.dispose(mDisposable);
     }
 
     @Bindable

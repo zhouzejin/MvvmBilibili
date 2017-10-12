@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="layout"
+            type="com.sunny.mvvmbilibili.ui.layout.SearchFooterLayout"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/search_item_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/search_item_padding"
+            android:visibility="@{TextUtils.isEmpty(layout.loadHint.get()) ? View.VISIBLE : View.GONE}">
+
+            <com.sunny.mvvmbilibili.widget.CircleProgressView
+                android:layout_width="@dimen/search_loading_size"
+                android:layout_height="@dimen/search_loading_size"
+                android:layout_marginEnd="@dimen/search_loading_margin"
+                app:matProg_barColor="?attr/colorPrimary"
+                app:matProg_barWidth="@dimen/search_loading_bar_width"
+                app:spin="@{true}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                android:textColor="@color/text_color_desc"
+                android:textSize="@dimen/text_smaller_body"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/search_item_padding"
+            android:text="@{layout.loadHint}"
+            android:textColor="@color/text_color_desc"
+            android:textSize="@dimen/text_smaller_body"
+            android:visibility="@{TextUtils.isEmpty(layout.loadHint.get()) ? View.GONE : View.VISIBLE}"/>
+    </FrameLayout>
+
+</layout>

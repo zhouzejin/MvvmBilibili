@@ -64,4 +64,18 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- 搜索索引TextView -->
+    <style name="BilibiliTheme.Search_TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/search_index_padding</item>
+        <item name="android:drawableEnd">@drawable/ic_index_close</item>
+        <item name="android:drawablePadding">@dimen/search_index_icon_padding</item>
+        <item name="android:textColor">@color/text_color_desc</item>
+        <item name="android:textSize">@dimen/text_small_body</item>
+        <item name="android:foreground">?android:selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+
 </resources>

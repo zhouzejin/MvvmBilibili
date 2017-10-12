@@ -3,34 +3,48 @@ package com.sunny.mvvmbilibili.ui.search;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.View;
 
 import com.sunny.mvvmbilibili.R;
+import com.sunny.mvvmbilibili.data.model.bean.SearchNav;
 import com.sunny.mvvmbilibili.databinding.ActivitySearchBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
+import com.sunny.mvvmbilibili.ui.layout.SearchLayout;
 import com.sunny.mvvmbilibili.utils.ViewUtil;
 
-import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Search activity.
  * Created by Zhou Zejin on 2017/9/27.
  */
-public class SearchActivity extends BaseActivity implements SearchMvvmView {
+public class SearchActivity extends BaseActivity {
+
+    public final SearchLayout searchLayout = new SearchLayout() {
+        @Override
+        public void back() {
+            onBackPressed();
+        }
+
+        @Override
+        public void search() {
+            query(searchStr.get());
+            ViewUtil.hideKeyboard(SearchActivity.this);
+        }
+    };
 
     private static final String EXTRA_QUERY_STRING =
             "com.sunny.mvvmbilibili.ui.search.SearchActivity.EXTRA_QUERY_STRING";
 
-    @Inject SearchViewModel mViewModel;
-
     private ActivitySearchBinding mBinding;
 
-    private String[] mTitles;
-    private Fragment[] mFragments;
+    private List<Fragment> mFragments = new ArrayList<>();
+    private List<String> mTitles = new ArrayList<>();
 
     public static Intent getStartIntent(Context context, String query) {
         Intent intent = new Intent(context, SearchActivity.class);
@@ -39,52 +53,66 @@ public class SearchActivity extends BaseActivity implements SearchMvvmView {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mViewModel.attachView(this);
-        mViewModel.query(getIntent().getStringExtra(EXTRA_QUERY_STRING));
-    }
-
-    @Override
     public void initComponent() {
-        activityComponent().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_search);
-        mBinding.setViewmodel(mViewModel);
+        mBinding.setActivity(this);
         setContentView(mBinding.getRoot());
         initView();
-        initViewPager();
+        query(getIntent().getStringExtra(EXTRA_QUERY_STRING));
     }
 
     private void initView() {
-        mViewModel.searchLayout.searchStr.set(getIntent().getStringExtra(EXTRA_QUERY_STRING));
+        searchLayout.searchStr.set(getIntent().getStringExtra(EXTRA_QUERY_STRING));
     }
 
-    private void initViewPager() {
-        mTitles = new String[]{"综合", "番剧(3)", "用户(99+)", "影视(99+)"};
-        mFragments = new Fragment[]{
-                MainFragment.newInstance(),
-                MainFragment.newInstance(),
-                MainFragment.newInstance(),
-                MainFragment.newInstance(),
-        };
+    private void query(String queryStr) {
+        mFragments.clear();
+        mTitles.clear();
+        mFragments.add(SearchFragment.newInstance(queryStr));
+        mTitles.add(getString(R.string.archive));
 
-        SearchPagerAdapter adapter = new SearchPagerAdapter(getSupportFragmentManager());
-        mBinding.viewPager.setOffscreenPageLimit(mFragments.length - 1);
-        mBinding.viewPager.setAdapter(adapter);
+        mBinding.viewPager.setAdapter(new SearchPagerAdapter(getSupportFragmentManager()));
         mBinding.viewPager.setCurrentItem(0);
-        mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
+
+        mBinding.tabLayout.removeAllTabs();
+        mBinding.tabLayout.setVisibility(View.GONE);
+    }
+
+    public void addSearchTab(List<SearchNav> searchNavs) {
+        for (SearchNav searchNav : searchNavs) {
+            switch (searchNav.type()) {
+                case 1:
+                    mFragments.add(MainFragment.newInstance());
+                    break;
+                case 2:
+                    mFragments.add(MainFragment.newInstance());
+                    break;
+                case 3:
+                    mFragments.add(MainFragment.newInstance());
+                    break;
+                default:
+                    return;
+            }
+            mTitles.add(getTabTitle(searchNav));
+        }
+
+        mBinding.viewPager.getAdapter().notifyDataSetChanged();
+        mBinding.viewPager.setOffscreenPageLimit(mFragments.size() - 1);
+
         mBinding.tabLayout.post(new Runnable() {
             @Override
             public void run() {
                 ViewUtil.setIndicatorWidth(mBinding.tabLayout, 24);
             }
         });
+        mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
+        mBinding.tabLayout.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    protected void onDestroy() {
-        mViewModel.detachView();
-        super.onDestroy();
+    private String getTabTitle(SearchNav searchNav) {
+        if (searchNav.total() == 0) return searchNav.name();
+        String total = searchNav.total() > 99 ? "99+" : String.valueOf(searchNav.total());
+        return getString(R.string.search_title, searchNav.name(), total);
     }
 
     private final class SearchPagerAdapter extends FragmentStatePagerAdapter {
@@ -95,27 +123,18 @@ public class SearchActivity extends BaseActivity implements SearchMvvmView {
 
         @Override
         public Fragment getItem(int position) {
-            return mFragments[position];
+            return mFragments.get(position);
         }
 
         @Override
         public int getCount() {
-            return mFragments.length;
+            return mFragments.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mTitles[position];
+            return mTitles.get(position);
         }
-    }
-
-    /*****
-     * MVVM View methods implementation
-     *****/
-
-    @Override
-    public void backView() {
-        onBackPressed();
     }
 
 }

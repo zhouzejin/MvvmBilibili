@@ -8,6 +8,14 @@ import com.sunny.mvvmbilibili.ui.base.MvvmView;
  */
 public interface SearchMvvmView extends MvvmView {
 
-    void backView();
+    void showSearchNav();
+
+    void showSearching();
+
+    void hideSearching();
+
+    void setRecyclerScrollLoading(boolean isLoading);
+
+    void setCurrentPage(int pageNum);
 
 }

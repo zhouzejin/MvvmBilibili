@@ -10,6 +10,7 @@
     <dimen name="text_large_body">18sp</dimen>
     <dimen name="text_body">16sp</dimen>
     <dimen name="text_small_body">14sp</dimen>
+    <dimen name="text_smaller_body">13sp</dimen>
     <dimen name="text_mini_body">12sp</dimen>
     <dimen name="text_tiny_body">10sp</dimen>
 
@@ -142,5 +143,17 @@
 
     <!-- search -->
     <dimen name="search_tab_height">40dp</dimen>
+    <dimen name="search_item_padding">6dp</dimen>
+    <dimen name="search_item_margin">6dp</dimen>
+    <dimen name="search_image_width">105dp</dimen>
+    <dimen name="search_image_height">140dp</dimen>
+    <dimen name="search_icon_size">17dp</dimen>
+    <dimen name="search_archive_width">145dp</dimen>
+    <dimen name="search_archive_height">88dp</dimen>
+    <dimen name="search_index_padding">12dp</dimen>
+    <dimen name="search_index_icon_padding">5dp</dimen>
+    <dimen name="search_loading_size">16dp</dimen>
+    <dimen name="search_loading_bar_width">2dp</dimen>
+    <dimen name="search_loading_margin">8dp</dimen>
 
 </resources>

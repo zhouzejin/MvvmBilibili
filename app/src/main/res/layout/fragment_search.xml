@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.search.SearchViewModel"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_searching"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/animation_searching"
+            android:visibility="@{viewmodel.isSearching ? View.VISIBLE : View.GONE}"/>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewmodel.isShowContent ? View.VISIBLE : View.GONE}">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:stateListAnimator="@animator/appbar_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        style="@style/BilibiliTheme.Search_TextView"
+                        android:text="@string/default_sort"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"/>
+
+                    <TextView
+                        style="@style/BilibiliTheme.Search_TextView"
+                        android:text="@string/all_time"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"/>
+
+                    <TextView
+                        style="@style/BilibiliTheme.Search_TextView"
+                        android:text="@string/all_section"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:descendantFocusability="blocksDescendants"
+                android:scrollbars="none"
+                app:items="@{viewmodel.items}"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </android.support.design.widget.CoordinatorLayout>
+
+        <include
+            layout="@layout/layout_content_empty"
+            bind:layout="@{viewmodel.contentEmptyLayout}"/>
+    </FrameLayout>
+
+</layout>

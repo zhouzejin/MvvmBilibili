@@ -13,6 +13,7 @@ import com.sunny.mvvmbilibili.ui.home.bangumi.BangumiFragment;
 import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
 import com.sunny.mvvmbilibili.ui.home.region.RegionFragment;
+import com.sunny.mvvmbilibili.ui.search.SearchFragment;
 import com.sunny.mvvmbilibili.ui.setting.SettingFragment;
 import com.sunny.mvvmbilibili.ui.wallet.WalletFragment;
 
@@ -37,5 +38,6 @@ public interface FragmentComponent {
     void inject(LiveFragment fragment);
     void inject(BangumiFragment fragment);
     void inject(RegionFragment fragment);
+    void inject(SearchFragment fragment);
 
 }

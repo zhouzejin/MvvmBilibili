@@ -70,7 +70,8 @@
         <activity
             android:name=".ui.search.SearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BilibiliTheme.Search"/>
+            android:theme="@style/BilibiliTheme.Search"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan"/>
 
         <activity
             android:name=".ui.example.MainActivity"

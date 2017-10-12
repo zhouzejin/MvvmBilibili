@@ -9,6 +9,7 @@ import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.LiveInfos;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendBanner;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendResult;
+import com.sunny.mvvmbilibili.data.model.bean.SearchData;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.data.model.entity.BangumiInfoEntity;
@@ -18,6 +19,7 @@ import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
 import com.sunny.mvvmbilibili.data.model.entity.LiveInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendBannerEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendShowEntity;
+import com.sunny.mvvmbilibili.data.model.entity.SearchArchiveEntity;
 import com.sunny.mvvmbilibili.data.model.entity.VipGameInfoEntity;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
@@ -169,6 +171,17 @@ public class DataManager {
                     @Override
                     public List<BangumiRecommendResult> apply(@NonNull BangumiRecommendEntity bangumiRecommendEntity) throws Exception {
                         return bangumiRecommendEntity.result();
+                    }
+                });
+    }
+
+    public Observable<SearchData> searchArchive(String keyword, int pageNum) {
+        return mRetrofitHelper.getBiliBiliService()
+                .searchArchive(keyword, pageNum)
+                .map(new Function<SearchArchiveEntity, SearchData>() {
+                    @Override
+                    public SearchData apply(@NonNull SearchArchiveEntity searchArchiveEntity) throws Exception {
+                        return searchArchiveEntity.data();
                     }
                 });
     }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.search.SearchViewModel.SearchSeasonViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="@dimen/search_item_padding">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/window_background"
+            app:contentPadding="2dp">
+
+            <ImageView
+                android:layout_width="@dimen/search_image_width"
+                android:layout_height="@dimen/search_image_height"
+                android:scaleType="center"
+                android:src="@drawable/img_default_image"
+                app:imageUrl="@{viewmodel.season.get().cover()}"/>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/search_item_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/search_item_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/search_icon_size"
+                    android:layout_height="@dimen/search_icon_size"
+                    android:layout_marginEnd="@dimen/search_item_margin"
+                    android:src="@drawable/ic_category_bangumi"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bangumi"
+                    android:textColor="@color/text_color_desc"
+                    android:textSize="@dimen/text_smaller_body"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/search_item_margin"
+                android:text="@{viewmodel.season.get().title()}"
+                android:textColor="@color/text_color_body"
+                android:textSize="@dimen/text_body"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/search_item_margin"
+                android:text="@{viewmodel.season.get().finish() == 1 ? @string/season_newest1(viewmodel.season.get().newest_season(), viewmodel.season.get().total_count()) : @string/season_newest0(viewmodel.season.get().newest_season(), viewmodel.season.get().total_count())}"
+                android:textColor="@color/text_color_desc"
+                android:textSize="@dimen/text_smaller_body"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/search_item_margin"
+                android:text="@{viewmodel.season.get().cat_desc() ?? @string/space}"
+                android:textColor="@color/text_color_desc"
+                android:textSize="@dimen/text_smaller_body"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

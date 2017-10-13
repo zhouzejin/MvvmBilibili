@@ -14,6 +14,7 @@ import com.sunny.mvvmbilibili.databinding.ActivitySearchBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.layout.SearchLayout;
+import com.sunny.mvvmbilibili.ui.search.bangumi.SearchBangumiFragment;
 import com.sunny.mvvmbilibili.utils.ViewUtil;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class SearchActivity extends BaseActivity {
             "com.sunny.mvvmbilibili.ui.search.SearchActivity.EXTRA_QUERY_STRING";
 
     private ActivitySearchBinding mBinding;
+    private String mKeyword;
 
     private List<Fragment> mFragments = new ArrayList<>();
     private List<String> mTitles = new ArrayList<>();
@@ -66,9 +68,11 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void query(String queryStr) {
+        mKeyword = queryStr;
+
         mFragments.clear();
         mTitles.clear();
-        mFragments.add(SearchFragment.newInstance(queryStr));
+        mFragments.add(SearchFragment.newInstance(mKeyword));
         mTitles.add(getString(R.string.archive));
 
         mBinding.viewPager.setAdapter(new SearchPagerAdapter(getSupportFragmentManager()));
@@ -82,7 +86,7 @@ public class SearchActivity extends BaseActivity {
         for (SearchNav searchNav : searchNavs) {
             switch (searchNav.type()) {
                 case 1:
-                    mFragments.add(MainFragment.newInstance());
+                    mFragments.add(SearchBangumiFragment.newInstance(mKeyword));
                     break;
                 case 2:
                     mFragments.add(MainFragment.newInstance());

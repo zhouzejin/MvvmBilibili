@@ -9,6 +9,7 @@ import com.sunny.mvvmbilibili.data.model.bean.GameInfo;
 import com.sunny.mvvmbilibili.data.model.bean.LiveInfos;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendBanner;
 import com.sunny.mvvmbilibili.data.model.bean.RecommendResult;
+import com.sunny.mvvmbilibili.data.model.bean.SearchBangumiData;
 import com.sunny.mvvmbilibili.data.model.bean.SearchData;
 import com.sunny.mvvmbilibili.data.model.bean.Subject;
 import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
@@ -20,6 +21,7 @@ import com.sunny.mvvmbilibili.data.model.entity.LiveInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendBannerEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendShowEntity;
 import com.sunny.mvvmbilibili.data.model.entity.SearchArchiveEntity;
+import com.sunny.mvvmbilibili.data.model.entity.SearchBangumiEntity;
 import com.sunny.mvvmbilibili.data.model.entity.VipGameInfoEntity;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
@@ -182,6 +184,17 @@ public class DataManager {
                     @Override
                     public SearchData apply(@NonNull SearchArchiveEntity searchArchiveEntity) throws Exception {
                         return searchArchiveEntity.data();
+                    }
+                });
+    }
+
+    public Observable<SearchBangumiData> searchBangumi(String keyword, int pageNum) {
+        return mRetrofitHelper.getBiliBiliService()
+                .searchBangumi(keyword, pageNum)
+                .map(new Function<SearchBangumiEntity, SearchBangumiData>() {
+                    @Override
+                    public SearchBangumiData apply(@NonNull SearchBangumiEntity searchBangumiEntity) throws Exception {
+                        return searchBangumiEntity.data();
                     }
                 });
     }

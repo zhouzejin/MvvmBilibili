@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.sunny.mvvmbilibili.R;
@@ -15,6 +16,7 @@ import com.sunny.mvvmbilibili.ui.base.BaseActivity;
 import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.layout.SearchLayout;
 import com.sunny.mvvmbilibili.ui.search.bangumi.SearchBangumiFragment;
+import com.sunny.mvvmbilibili.ui.search.movie.SearchMovieFragment;
 import com.sunny.mvvmbilibili.utils.ViewUtil;
 
 import java.util.ArrayList;
@@ -68,6 +70,8 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void query(String queryStr) {
+        if (TextUtils.isEmpty(queryStr)) return;
+
         mKeyword = queryStr;
 
         mFragments.clear();
@@ -92,7 +96,7 @@ public class SearchActivity extends BaseActivity {
                     mFragments.add(MainFragment.newInstance());
                     break;
                 case 3:
-                    mFragments.add(MainFragment.newInstance());
+                    mFragments.add(SearchMovieFragment.newInstance(mKeyword));
                     break;
                 default:
                     return;

@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
+import io.reactivex.annotations.Nullable;
+
 /**
  * Created by Administrator on 2017/10/10.
  */
@@ -21,14 +23,22 @@ public abstract class SearchMovie implements Parcelable {
     public abstract String param();
     @SerializedName("goto")
     public abstract String gotoX();
+    @Nullable
     public abstract String desc();
+    @Nullable
     public abstract String screen_date();
+    @Nullable
     public abstract String area();
+    @Nullable
     public abstract String cover_mark();
+    @Nullable
     public abstract String actors();
+    @Nullable
     public abstract String staff();
-    public abstract int length();
-    public abstract int status();
+    @Nullable
+    public abstract Integer length();
+    @Nullable
+    public abstract Integer status();
 
     public static TypeAdapter<SearchMovie> typeAdapter(Gson gson) {
         return new AutoValue_SearchMovie.GsonTypeAdapter(gson);

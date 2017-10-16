@@ -115,7 +115,9 @@
     <string name="default_sort">默认排序</string>
     <string name="all_time">全部时长</string>
     <string name="all_section">全部分区</string>
+    <string name="all_upper">全部用户</string>
     <string name="loading">加载中</string>
+    <string name="upper_info">粉丝：%1$d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;视频：%2$d</string>
 
     <string name="dialog_action_ok">确定</string>
     <string name="dialog_action_cancel">取消</string>

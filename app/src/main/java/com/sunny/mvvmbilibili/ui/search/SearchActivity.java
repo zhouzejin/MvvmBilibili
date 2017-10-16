@@ -13,10 +13,10 @@ import com.sunny.mvvmbilibili.R;
 import com.sunny.mvvmbilibili.data.model.bean.SearchNav;
 import com.sunny.mvvmbilibili.databinding.ActivitySearchBinding;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
-import com.sunny.mvvmbilibili.ui.example.MainFragment;
 import com.sunny.mvvmbilibili.ui.layout.SearchLayout;
 import com.sunny.mvvmbilibili.ui.search.bangumi.SearchBangumiFragment;
 import com.sunny.mvvmbilibili.ui.search.movie.SearchMovieFragment;
+import com.sunny.mvvmbilibili.ui.search.upper.SearchUpperFragment;
 import com.sunny.mvvmbilibili.utils.ViewUtil;
 
 import java.util.ArrayList;
@@ -93,7 +93,7 @@ public class SearchActivity extends BaseActivity {
                     mFragments.add(SearchBangumiFragment.newInstance(mKeyword));
                     break;
                 case 2:
-                    mFragments.add(MainFragment.newInstance());
+                    mFragments.add(SearchUpperFragment.newInstance(mKeyword));
                     break;
                 case 3:
                     mFragments.add(SearchMovieFragment.newInstance(mKeyword));

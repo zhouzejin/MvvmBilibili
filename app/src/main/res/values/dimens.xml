@@ -155,5 +155,7 @@
     <dimen name="search_loading_size">16dp</dimen>
     <dimen name="search_loading_bar_width">2dp</dimen>
     <dimen name="search_loading_margin">8dp</dimen>
+    <dimen name="search_portrait_size">45dp</dimen>
+    <dimen name="search_upper_line_margin">12dp</dimen>
 
 </resources>

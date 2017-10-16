@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.search.upper.SearchUpperViewModel.UpperViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/search_item_padding">
+
+            <com.sunny.mvvmbilibili.widget.CircleImageView
+                android:layout_width="@dimen/search_portrait_size"
+                android:layout_height="@dimen/search_portrait_size"
+                android:layout_margin="@dimen/search_item_margin"
+                app:border_color="@android:color/white"
+                app:border_width="1dp"
+                app:imageUrl="@{viewmodel.upper.get().cover()}"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/search_item_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/search_item_margin"
+                    android:text="@{viewmodel.upper.get().title()}"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/upper_info(viewmodel.upper.get().fans(), viewmodel.upper.get().archives())}"
+                    android:textColor="@color/text_color_desc"
+                    android:textSize="@dimen/text_mini_body"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="@dimen/search_upper_line_margin"
+            android:layout_marginStart="@dimen/search_upper_line_margin"
+            android:background="@color/line"/>
+    </LinearLayout>
+
+</layout>

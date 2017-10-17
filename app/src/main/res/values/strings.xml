@@ -80,6 +80,14 @@
     <string name="bangumi_recommend">番剧推荐</string>
     <string name="subarea">分区</string>
     <string name="discover">发现</string>
+    <string name="hot_search">大家都在搜</string>
+    <string name="intersecting_circle">兴趣圈</string>
+    <string name="topic_center">话题中心</string>
+    <string name="activity_center">活动中心</string>
+    <string name="creation_rank">原创排行榜</string>
+    <string name="total_rank">全区排行榜</string>
+    <string name="around_shopping">周边商城</string>
+    <string name="pack_up">收起</string>
 
     <string name="about_me">关于我</string>
     <string name="about_app">关于哔哩哔哩</string>

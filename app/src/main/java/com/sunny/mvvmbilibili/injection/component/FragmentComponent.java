@@ -10,6 +10,7 @@ import com.sunny.mvvmbilibili.ui.favourite.FavouriteFragment;
 import com.sunny.mvvmbilibili.ui.history.HistoryFragment;
 import com.sunny.mvvmbilibili.ui.home.HomeFragment;
 import com.sunny.mvvmbilibili.ui.home.bangumi.BangumiFragment;
+import com.sunny.mvvmbilibili.ui.home.discover.DiscoverFragment;
 import com.sunny.mvvmbilibili.ui.home.live.LiveFragment;
 import com.sunny.mvvmbilibili.ui.home.recommend.RecommendFragment;
 import com.sunny.mvvmbilibili.ui.home.region.RegionFragment;
@@ -45,5 +46,6 @@ public interface FragmentComponent {
     void inject(SearchBangumiFragment fragment);
     void inject(SearchMovieFragment fragment);
     void inject(SearchUpperFragment fragment);
+    void inject(DiscoverFragment fragment);
 
 }

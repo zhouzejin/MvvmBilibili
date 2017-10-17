@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.discover.DiscoverViewModel"/>
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/discovery_search_margin"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_search_padding">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_hint_search"
+                    android:tint="@color/text_color_hint"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/discovery_search_margin"
+                    android:layout_marginStart="@dimen/discovery_search_margin"
+                    android:layout_weight="1"
+                    android:text="@string/search_hint"
+                    android:textColor="@color/text_color_desc"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_hint_scan"
+                    android:tint="@color/text_color_hint"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/discovery_search_margin"
+                android:text="@string/hot_search"
+                android:textColor="@color/text_color_desc"
+                android:textSize="@dimen/text_small_body"/>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:max_select="-1"/>
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/discovery_tag_height"
+                android:overScrollMode="never">
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:max_select="-1"/>
+            </android.support.v4.widget.NestedScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/discovery_item_margin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/discovery_line_margin"
+                    android:layout_weight="1"
+                    android:background="@color/disabled"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/discovery_search_margin"
+                    android:drawablePadding="@dimen/discovery_icon_padding"
+                    android:drawableStart="@drawable/ic_down_arrow"
+                    android:gravity="center"
+                    android:text="@string/see_more"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_mini_body"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="@dimen/discovery_line_margin"
+                    android:layout_weight="1"
+                    android:background="@color/disabled"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_interest"
+                    android:gravity="center"
+                    android:text="@string/intersecting_circle"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_topic"
+                    android:gravity="center"
+                    android:text="@string/topic_center"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/discovery_item_margin"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_activity"
+                    android:gravity="center"
+                    android:text="@string/activity_center"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_creation_rank"
+                    android:gravity="center"
+                    android:text="@string/creation_rank"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/discovery_item_margin"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_total_rank"
+                    android:gravity="center"
+                    android:text="@string/total_rank"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_game_center"
+                    android:gravity="center"
+                    android:text="@string/game_center"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/discovery_search_margin"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/discovery_item_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/discovery_search_padding"
+                    android:drawableStart="@drawable/ic_shopping"
+                    android:gravity="center"
+                    android:text="@string/around_shopping"
+                    android:textColor="@color/text_color_body"
+                    android:textSize="@dimen/text_small_body"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</layout>

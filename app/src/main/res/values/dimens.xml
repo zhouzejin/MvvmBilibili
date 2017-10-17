@@ -158,4 +158,13 @@
     <dimen name="search_portrait_size">45dp</dimen>
     <dimen name="search_upper_line_margin">12dp</dimen>
 
+    <!-- discovery -->
+    <dimen name="discovery_search_margin">8dp</dimen>
+    <dimen name="discovery_search_padding">10dp</dimen>
+    <dimen name="discovery_tag_height">180dp</dimen>
+    <dimen name="discovery_icon_padding">5dp</dimen>
+    <dimen name="discovery_line_margin">30dp</dimen>
+    <dimen name="discovery_item_padding">12dp</dimen>
+    <dimen name="discovery_item_margin">20dp</dimen>
+
 </resources>

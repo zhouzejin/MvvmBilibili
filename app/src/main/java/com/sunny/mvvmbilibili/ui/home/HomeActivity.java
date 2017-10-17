@@ -12,7 +12,6 @@ import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
 import com.sunny.mvvmbilibili.R;
-import com.sunny.mvvmbilibili.data.SyncService;
 import com.sunny.mvvmbilibili.databinding.ActivityHomeBinding;
 import com.sunny.mvvmbilibili.ui.attention.AttentionFragment;
 import com.sunny.mvvmbilibili.ui.base.BaseActivity;
@@ -58,9 +57,6 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // TODO delete it after developing over.
-        startService(SyncService.getStartIntent(this));
     }
 
     @Override

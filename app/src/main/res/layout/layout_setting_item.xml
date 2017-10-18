@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="layout"
+            type="com.sunny.mvvmbilibili.ui.layout.SettingItemLayout"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/item_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/item_drawable_padding"
+            android:drawableStart="@{layout.itemIcon}"
+            android:gravity="center"
+            android:text="@{layout.itemText}"
+            android:textColor="@color/text_color_body"
+            android:textSize="@dimen/text_small_body"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:visibility="@{layout.showArrow ? View.VISIBLE : View.GONE}"/>
+    </LinearLayout>
+
+</layout>

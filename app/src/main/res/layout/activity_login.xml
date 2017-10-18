@@ -72,7 +72,7 @@
                     android:textColor="@color/text_color_normal"
                     android:textColorHint="@color/text_color_hint"
                     android:textSize="@dimen/text_body"
-                    app:OnFocusChangeListener="@{(v, hasFocus) -> viewmodel.onUsernameFocusChange(hasFocus)}"
+                    app:onFocusChangeListener="@{(v, hasFocus) -> viewmodel.onUsernameFocusChange(hasFocus)}"
                     app:addTextChangedListener="@{viewmodel.getUsernameWatcher}"/>
 
                 <ImageButton
@@ -104,7 +104,7 @@
                 android:textColor="@color/text_color_normal"
                 android:textColorHint="@color/text_color_hint"
                 android:textSize="@dimen/text_body"
-                app:OnFocusChangeListener="@{(v, hasFocus) -> viewmodel.onPasswordFocusChange(hasFocus)}"/>
+                app:onFocusChangeListener="@{(v, hasFocus) -> viewmodel.onPasswordFocusChange(hasFocus)}"/>
         </LinearLayout>
 
         <Button

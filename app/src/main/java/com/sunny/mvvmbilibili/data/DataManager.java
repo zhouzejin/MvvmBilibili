@@ -18,6 +18,7 @@ import com.sunny.mvvmbilibili.data.model.bean.VipGameInfo;
 import com.sunny.mvvmbilibili.data.model.entity.BangumiInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.BangumiRecommendEntity;
 import com.sunny.mvvmbilibili.data.model.entity.GameInfoEntity;
+import com.sunny.mvvmbilibili.data.model.entity.HotWordEntity;
 import com.sunny.mvvmbilibili.data.model.entity.InTheatersEntity;
 import com.sunny.mvvmbilibili.data.model.entity.LiveInfoEntity;
 import com.sunny.mvvmbilibili.data.model.entity.RecommendBannerEntity;
@@ -27,6 +28,7 @@ import com.sunny.mvvmbilibili.data.model.entity.SearchBangumiEntity;
 import com.sunny.mvvmbilibili.data.model.entity.SearchMovieEntity;
 import com.sunny.mvvmbilibili.data.model.entity.SearchUpperEntity;
 import com.sunny.mvvmbilibili.data.model.entity.VipGameInfoEntity;
+import com.sunny.mvvmbilibili.data.model.pojo.HotWord;
 import com.sunny.mvvmbilibili.data.remote.RetrofitHelper;
 import com.sunny.mvvmbilibili.utils.factory.MyGsonTypeAdapterFactory;
 
@@ -221,6 +223,17 @@ public class DataManager {
                     @Override
                     public SearchUpperData apply(@NonNull SearchUpperEntity searchUpperEntity) throws Exception {
                         return searchUpperEntity.data();
+                    }
+                });
+    }
+
+    public Observable<List<HotWord>> getHotWord() {
+        return mRetrofitHelper.getSearchService()
+                .getSearchHotWord()
+                .map(new Function<HotWordEntity, List<HotWord>>() {
+                    @Override
+                    public List<HotWord> apply(@NonNull HotWordEntity hotWordEntity) throws Exception {
+                        return hotWordEntity.list();
                     }
                 });
     }

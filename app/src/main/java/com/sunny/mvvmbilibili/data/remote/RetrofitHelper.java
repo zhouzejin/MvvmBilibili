@@ -130,6 +130,7 @@ public class RetrofitHelper {
     private BiliBiliService mBiliBiliService;
     private LiveService mLiveService;
     private BangumiService mBangumiService;
+    private SearchService mSearchService;
 
     @Inject
     public RetrofitHelper(@ApplicationContext Context context) {
@@ -138,6 +139,7 @@ public class RetrofitHelper {
         mBiliBiliService = createApiService(context, BiliBiliService.class, BiliBiliService.ENDPOINT);
         mLiveService = createApiService(context, LiveService.class, LiveService.ENDPOINT);
         mBangumiService = createApiService(context, BangumiService.class, BangumiService.ENDPOINT);
+        mSearchService = createApiService(context, SearchService.class, SearchService.ENDPOINT);
     }
 
     public RetrofitService getRetrofitService() {
@@ -158,6 +160,10 @@ public class RetrofitHelper {
 
     public BangumiService getBangumiService() {
         return mBangumiService;
+    }
+
+    public SearchService getSearchService() {
+        return mSearchService;
     }
 
 }

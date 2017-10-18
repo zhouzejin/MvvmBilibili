@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.sunny.mvvmbilibili.ui.home.discover.DiscoverViewModel.HowWordViewModel"/>
+    </data>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/discovery_tag_margin"
+        android:background="@drawable/selector_tag_bg"
+        android:text="@{viewmodel.howWord.get().keyword()}"
+        android:textColor="@color/text_color_desc"
+        android:textSize="@dimen/text_small_body"/>
+
+</layout>

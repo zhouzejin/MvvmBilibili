@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View"/>
 
         <variable
             name="viewmodel"
@@ -25,6 +28,7 @@
                 android:layout_margin="@dimen/discovery_search_margin"
                 android:background="@android:color/white"
                 android:gravity="center"
+                android:onClick="@{(v) -> viewmodel.goSearch()}"
                 android:orientation="horizontal"
                 android:padding="@dimen/discovery_search_padding">
 
@@ -60,19 +64,29 @@
                 android:textSize="@dimen/text_small_body"/>
 
             <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/tag_flow_show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:max_select="-1"/>
+                android:layout_marginEnd="@dimen/discovery_tag_margin"
+                android:layout_marginStart="@dimen/discovery_tag_margin"
+                android:visibility="@{viewmodel.isShowMoreTag ? View.GONE : View.VISIBLE}"
+                app:max_select="-1"
+                app:onTagClickListener="@{viewmodel.getOnTagClickListener}"/>
 
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/discovery_tag_height"
-                android:overScrollMode="never">
+                android:overScrollMode="never"
+                android:visibility="@{viewmodel.isShowMoreTag ? View.VISIBLE : View.GONE}">
 
                 <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tag_flow_gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:max_select="-1"/>
+                    android:layout_marginEnd="@dimen/discovery_tag_margin"
+                    android:layout_marginStart="@dimen/discovery_tag_margin"
+                    app:max_select="-1"
+                    app:onTagClickListener="@{viewmodel.getOnTagClickListener}"/>
             </android.support.v4.widget.NestedScrollView>
 
             <LinearLayout
@@ -80,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/discovery_item_margin"
                 android:gravity="center"
+                android:onClick="@{(v) -> viewmodel.showMoreTag()}"
                 android:orientation="horizontal">
 
                 <View
@@ -94,9 +109,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/discovery_search_margin"
                     android:drawablePadding="@dimen/discovery_icon_padding"
-                    android:drawableStart="@drawable/ic_down_arrow"
+                    android:drawableStart="@{viewmodel.isShowMoreTag ? @drawable/ic_up_arrow : @drawable/ic_down_arrow}"
                     android:gravity="center"
-                    android:text="@string/see_more"
+                    android:text="@{viewmodel.isShowMoreTag ? @string/pack_up : @string/see_more}"
                     android:textColor="@color/text_color_body"
                     android:textSize="@dimen/text_mini_body"/>
 
@@ -108,196 +123,54 @@
                     android:background="@color/disabled"/>
             </LinearLayout>
 
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
+                bind:layout="@{viewmodel.itemLayouts[0]}"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_interest"
-                    android:gravity="center"
-                    android:text="@string/intersecting_circle"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
+                bind:layout="@{viewmodel.itemLayouts[1]}"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_topic"
-                    android:gravity="center"
-                    android:text="@string/topic_center"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/discovery_item_margin"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
+                bind:layout="@{viewmodel.itemLayouts[2]}"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_activity"
-                    android:gravity="center"
-                    android:text="@string/activity_center"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
+                bind:layout="@{viewmodel.itemLayouts[3]}"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_creation_rank"
-                    android:gravity="center"
-                    android:text="@string/creation_rank"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/discovery_item_margin"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
+                bind:layout="@{viewmodel.itemLayouts[4]}"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_total_rank"
-                    android:gravity="center"
-                    android:text="@string/total_rank"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
+                bind:layout="@{viewmodel.itemLayouts[5]}"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_game_center"
-                    android:gravity="center"
-                    android:text="@string/game_center"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/layout_setting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/discovery_search_margin"
-                android:background="@android:color/white"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/discovery_item_padding">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/discovery_search_padding"
-                    android:drawableStart="@drawable/ic_shopping"
-                    android:gravity="center"
-                    android:text="@string/around_shopping"
-                    android:textColor="@color/text_color_body"
-                    android:textSize="@dimen/text_small_body"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow"/>
-            </LinearLayout>
+                bind:layout="@{viewmodel.itemLayouts[6]}"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

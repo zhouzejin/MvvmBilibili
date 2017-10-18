@@ -109,4 +109,9 @@ public class BaseViewModel<T extends MvvmView> extends BaseObservable implements
         view.setCompoundDrawablesWithIntrinsicBounds(0, id, 0, 0);
     }
 
+    @BindingAdapter("android:drawableStart")
+    public static void setDrawableStart(TextView view, @DrawableRes int id) {
+        view.setCompoundDrawablesWithIntrinsicBounds(id, 0, 0, 0);
+    }
+
 }

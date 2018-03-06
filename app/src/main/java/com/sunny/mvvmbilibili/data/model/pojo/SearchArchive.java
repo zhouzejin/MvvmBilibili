@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
+import io.reactivex.annotations.Nullable;
+
 /**
  * Created by Administrator on 2017/10/10.
  */
@@ -15,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
 public abstract class SearchArchive implements Parcelable {
 
     public abstract String title();
+    @Nullable
     public abstract String name();
     public abstract String cover();
     public abstract String uri();

@@ -17,6 +17,7 @@ import io.reactivex.annotations.Nullable;
 public abstract class SearchSeason implements Parcelable {
 
     public abstract String title();
+    @Nullable
     public abstract String name();
     public abstract String cover();
     public abstract String uri();

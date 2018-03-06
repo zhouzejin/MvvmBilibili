@@ -16,6 +16,7 @@ import com.google.gson.annotations.SerializedName;
 public abstract class SearchUpper implements Parcelable {
 
     public abstract String title();
+    @Nullable
     public abstract String name();
     public abstract String cover();
     public abstract String uri();

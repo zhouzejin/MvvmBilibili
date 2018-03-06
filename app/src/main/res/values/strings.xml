@@ -94,9 +94,9 @@
     <string name="check_update">检查更新</string>
     <string name="login_out">退出登录</string>
     <string name="version">v%1$s</string>
+    <string name="my_blog">博客:https://zhouzejin.github.io/</string>
     <string name="github">GitHub:https://github.com/zhouzejin</string>
     <string name="micro_blog">微博:https://m.weibo.cn/u/3201750723</string>
-    <string name="jian_shu">简书:http://www.jianshu.com/u/ffd32e08018c</string>
     <string name="about_bilibili">「哔哩哔哩」</string>
     <string name="check_net">网络诊断</string>
     <string name="feedback">意见反馈</string>

@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/setting_info_margin_top"
                     android:autoLink="web"
-                    android:text="@string/github"
+                    android:text="@string/my_blog"
                     android:textSize="@dimen/text_small_body"/>
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/setting_info_margin_top"
                     android:autoLink="web"
-                    android:text="@string/jian_shu"
+                    android:text="@string/github"
                     android:textSize="@dimen/text_small_body"/>
 
                 <TextView

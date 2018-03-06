@@ -6,6 +6,8 @@ import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
+import io.reactivex.annotations.Nullable;
+
 /**
  * Created by Administrator on 2017/9/26.
  */
@@ -15,6 +17,7 @@ public abstract class BangumiRecommendResult implements Parcelable {
 
     public abstract String cover();
     public abstract long cursor();
+    @Nullable
     public abstract String desc();
     public abstract int id();
     public abstract int is_new();

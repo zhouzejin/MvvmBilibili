@@ -15,10 +15,10 @@ apply plugin: 'findbugs'
 apply plugin: 'pmd'
 
 dependencies {
-    checkstyle 'com.puppycrawl.tools:checkstyle:6.11.1'
+    checkstyle 'com.puppycrawl.tools:checkstyle:8.7'
 }
 
-def qualityConfigDir = "$project.rootDir/config/quality";
+def qualityConfigDir = "$project.rootDir/config/quality"
 def reportsDir = "$project.buildDir/reports"
 
 check.dependsOn 'checkstyle', 'findbugs', 'pmd'

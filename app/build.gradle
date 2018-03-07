@@ -20,10 +20,10 @@ android {
 
     signingConfigs {
         // 读取release版本的签名文件
-        def Properties localProps = new Properties()
+        Properties localProps = new Properties()
         localProps.load(new FileInputStream(file('../local.properties')))
 
-        def Properties keyProps = new Properties()
+        Properties keyProps = new Properties()
         if (localProps['keystore.properties.file']) {
             keyProps.load(new FileInputStream(file(localProps['keystore.properties.file'])))
         } else {
@@ -36,7 +36,7 @@ android {
 
         release {
             // release版本使用assert确保存在该属性否则报错，避免错误打包
-            assert localProps['keystore.properties.file'] != null;
+            assert localProps['keystore.properties.file'] != null
 
             storeFile file(keyProps["store"])
             keyAlias keyProps["alias"]
@@ -96,8 +96,8 @@ dependencies {
 
     final DAGGER_VERSION = '2.11'
 
-    final RXJAVA_VERSION = '2.1.2'
-    final RXANDROID_VERISON = '2.0.1'
+    final RXJAVA_VERSION = '2.1.10'
+    final RXANDROID_VERISON = '2.0.2'
 
     final RETROFIT_VERSION = '2.3.0'
     final OKHTTP_VERSION = '3.8.1'

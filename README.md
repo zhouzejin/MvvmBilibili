@@ -2,6 +2,12 @@
 
 一款使用MVVM架构的MaterialDesign风格的视频类APP.
 
+## 界面展示
+
+![主页](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/主页.png)
+![菜单](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/菜单.png)
+![搜索](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/搜索.png)
+
 ## License
 
 ```

@@ -4,11 +4,10 @@
 
 ## 界面展示
 
-<img src="https://github.com/zhouzejin/MvvmBilibili/raw/master/images/主页.png" height="30%" width="30%" alt="主页" align=left />
+<img src="https://github.com/zhouzejin/MvvmBilibili/raw/master/images/主页.png" height="25%" width="25%" alt="主页" align=left />
+<img src="https://github.com/zhouzejin/MvvmBilibili/raw/master/images/菜单.png" height="25%" width="25%" alt="菜单" align=ceter />
+<img src="https://github.com/zhouzejin/MvvmBilibili/raw/master/images/搜索.png" height="25%" width="25%" alt="搜索" align=right />
 <br />
-<img src="https://github.com/zhouzejin/MvvmBilibili/raw/master/images/菜单.png" height="30%" width="30%" alt="菜单" align=ceter />
-<br />
-<img src="https://github.com/zhouzejin/MvvmBilibili/raw/master/images/搜索.png" height="30%" width="30%" alt="搜索" align=right />
 
 ## License
 

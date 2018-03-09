@@ -4,9 +4,9 @@
 
 ## 界面展示
 
-![主页](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/主页.png)
-![菜单](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/菜单.png)
-![搜索](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/搜索.png)
+![主页](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/主页.png){:height="50%" width="50%"}
+![菜单](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/菜单.png){:height="50%" width="50%"}
+![搜索](https://github.com/zhouzejin/MvvmBilibili/raw/master/images/搜索.png){:height="50%" width="50%"}
 
 ## License
 

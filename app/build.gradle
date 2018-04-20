@@ -92,7 +92,7 @@ android {
 }
 
 dependencies {
-    final SUPPORT_LIBRARY_VERSION = '25.3.1'
+    final SUPPORT_LIBRARY_VERSION = '27.1.1'
 
     final DAGGER_VERSION = '2.11'
 
@@ -147,44 +147,44 @@ dependencies {
 
 
     // App Dependencies
-    compile libSupportAppcompatV7
-    compile libSupportRecyclerviewV7
-    compile libSupportCardviewV7
-    compile libSupportDesign
-    compile libSupportAnnotations
+    implementation libSupportAppcompatV7
+    implementation libSupportRecyclerviewV7
+    implementation libSupportCardviewV7
+    implementation libSupportDesign
+    implementation libSupportAnnotations
 
-    compile libDagger
+    implementation libDagger
     annotationProcessor libDaggerCompiler
     testAnnotationProcessor libDaggerCompiler
     androidTestAnnotationProcessor libDaggerCompiler
 
-    compile libRxjava
-    compile libRxandroid
+    implementation libRxjava
+    implementation libRxandroid
 
-    compile libRetrofit
-    compile libConverterGson
-    compile libAdapterRxjava
-    compile libLoggingInterceptor
+    implementation libRetrofit
+    implementation libConverterGson
+    implementation libAdapterRxjava
+    implementation libLoggingInterceptor
 
-    compile (libSqlbrite) {
+    implementation (libSqlbrite) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
 
-    provided libAutoValue
+    compileOnly libAutoValue
     annotationProcessor libAutoValue
     annotationProcessor libAutoValueParcel
-    provided libAutoValueGson
+    compileOnly libAutoValueGson
     annotationProcessor libAutoValueGson
-    compile libGson
+    implementation libGson
 
-    compile libGlide
+    implementation libGlide
 
-    compile libTimber
-    debugCompile libLeakcanary
-    releaseCompile libLeakcanaryNoOp
-    testCompile libLeakcanaryNoOp
+    implementation libTimber
+    debugImplementation libLeakcanary
+    releaseImplementation libLeakcanaryNoOp
+    testImplementation libLeakcanaryNoOp
 
-    compile 'com.miguelcatalan:materialsearchview:1.4.0'
-    compile 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.1.3'
-    compile 'com.hyman:flowlayout-lib:1.1.2'
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.1.3'
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
 }

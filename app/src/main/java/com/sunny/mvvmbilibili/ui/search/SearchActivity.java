@@ -91,17 +91,19 @@ public class SearchActivity extends BaseActivity {
             switch (searchNav.type()) {
                 case 1:
                     mFragments.add(SearchBangumiFragment.newInstance(mKeyword));
+                    mTitles.add(getTabTitle(searchNav));
                     break;
                 case 2:
                     mFragments.add(SearchUpperFragment.newInstance(mKeyword));
+                    mTitles.add(getTabTitle(searchNav));
                     break;
                 case 3:
                     mFragments.add(SearchMovieFragment.newInstance(mKeyword));
+                    mTitles.add(getTabTitle(searchNav));
                     break;
                 default:
-                    return;
+                    break;
             }
-            mTitles.add(getTabTitle(searchNav));
         }
 
         mBinding.viewPager.getAdapter().notifyDataSetChanged();

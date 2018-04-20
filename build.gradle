@@ -1,21 +1,24 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.1'
         classpath 'com.squareup.sqldelight:gradle-plugin:0.6.1'
     }
 
     allprojects {
         repositories {
             jcenter()
+            google()
         }
     }
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.3'
+    gradleVersion = '4.4'
     distributionUrl = distributionUrl.replace("bin", "all")
 }
 
@@ -24,12 +27,12 @@ task clean(type: Delete) {
 }
 
 project.ext {
-    compileSdkVersion = 26
-    buildToolsVersion = "26.0.2"
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.3"
 
     applicationId = "com.sunny.mvvmbilibili"
     minSdkVersion = 21
-    targetSdkVersion = 26
+    targetSdkVersion = 27
     versionCode = 1
     versionName = "1.0.0"
 }
